@@ -1,3 +1,5 @@
+package menu;
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -51,7 +53,7 @@ public class MainMenu {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				new Maze(lvlList.getSelectedItem().toString());
+				new world.Maze(lvlList.getSelectedItem().toString());
 				Menu.setVisible(false);
 			}
         	
@@ -65,7 +67,7 @@ public class MainMenu {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new MazeMapMaker();
+				new world.MazeMapMaker();
 				Menu.setVisible(false);
 			}
         	
@@ -99,10 +101,10 @@ public class MainMenu {
 
     public void getMapList(){
     	for(int i = 0; i < 99; i++){
-    		File map = new File("./Level "+i+".map");
+    		File map = new File("data\\maps\\" + "./Level "+i+".map");
     		if(map.exists()){
     			System.out.println("Level "+i+" exists");
-    			mapList.add("Level "+i+".map");
+    			mapList.add("data\\maps\\" + "Level "+i+".map");
     			levelsExistAlready = true;
     		}
     	}

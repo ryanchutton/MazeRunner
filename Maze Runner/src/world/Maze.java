@@ -1,3 +1,5 @@
+package world;
+
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
@@ -11,13 +13,14 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class Maze extends JFrame{
     public static int rows = 20;
     public static int columns = 20;
     public static int panelSize = 25;
     public static int map[][] = new int[columns][rows];
     public static int endLevelLoc;
-    Player p;
+    actor.Player p;
     
     public Maze(String str){
         loadMap(str);
@@ -52,7 +55,7 @@ public class Maze extends JFrame{
 				if(p.x == columns-1 && p.y == endLevelLoc){
 					JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game", JOptionPane.INFORMATION_MESSAGE);
 					dispose();
-					new MainMenu();
+					new menu.MainMenu();
 				}
 			}
 
@@ -80,7 +83,7 @@ public class Maze extends JFrame{
         this.setLocationRelativeTo(null);
         
         //Create player
-    	p = new Player();
+    	p = new actor.Player();
     	p.setVisible(true);
     	this.add(p);
     	
@@ -112,7 +115,7 @@ public class Maze extends JFrame{
     }
     
     public static void main(String args[]){
-    	new MainMenu();
+    	new menu.MainMenu();
     }
     
     public void loadMap(String str){

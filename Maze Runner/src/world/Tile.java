@@ -1,3 +1,5 @@
+package world;
+
 
 import javax.swing.JPanel;
 

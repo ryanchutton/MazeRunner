@@ -1,3 +1,5 @@
+package world;
+
 
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
@@ -5,6 +7,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class MapMakerTile extends JPanel{
     int x, y;
     

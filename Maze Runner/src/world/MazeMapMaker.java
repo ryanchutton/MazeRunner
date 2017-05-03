@@ -1,3 +1,5 @@
+package world;
+
 
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
@@ -33,7 +35,7 @@ public class MazeMapMaker extends JFrame{
 	        this.addWindowListener(new WindowAdapter(){
 	            public void windowClosing(WindowEvent e) {
 	                saveMap();
-	                new MainMenu();
+	                new menu.MainMenu();
 	            }
 	        });
 	        
@@ -57,13 +59,13 @@ public class MazeMapMaker extends JFrame{
 	        }
 	        this.setVisible(true);
     	}else{
-    		new MainMenu();
+    		new menu.MainMenu();
     	}
     }
     
     public void getMapList(){
     	for(int i = 0; i < 99; i++){
-    		File map = new File("./Level "+i+".map");
+    		File map = new File("data\\maps\\" + "./Level "+i+".map");
     		if(map.exists()){
     			System.out.println("Level "+i+" exists");
     			mapList.add("Level "+i+".map");
@@ -91,7 +93,7 @@ public class MazeMapMaker extends JFrame{
     
     public void saveMap(){
         try{
-        PrintWriter writer = new PrintWriter("Level "+level+".map", "UTF-8");
+        PrintWriter writer = new PrintWriter("data\\maps\\" + "Level "+level+".map", "UTF-8");
         for(int y = 0; y < columns; y++){
             for(int x = 0; x < rows; x++){
                 writer.print(map[x][y]);
@@ -106,7 +108,7 @@ public class MazeMapMaker extends JFrame{
     
     public void loadMap(){
         try{
-            BufferedReader br = new BufferedReader(new FileReader("Level "+level+".map"));
+            BufferedReader br = new BufferedReader(new FileReader("data\\maps\\" + "Level "+level+".map"));
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
 
