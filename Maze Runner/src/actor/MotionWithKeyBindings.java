@@ -62,6 +62,17 @@ public class MotionWithKeyBindings {
 		{
 			// Move the component
 			component.setLocation(nextX, nextY);
+			
+		}
+		
+		if (world.Maze.map[(nextX - 23) / world.Maze.panelSize][(nextY - 25) / world.Maze.panelSize] == 2)
+
+		{
+			// Move the component
+			component.setLocation(nextX, nextY);
+			JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game", JOptionPane.INFORMATION_MESSAGE);
+			
+			
 		}
 	}
 

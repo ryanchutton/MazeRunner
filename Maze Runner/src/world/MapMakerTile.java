@@ -21,6 +21,10 @@ public class MapMakerTile extends JPanel{
 	                        setBackground(Color.WHITE);
 	                        MazeMapMaker.map[x][y] = 1;
                     	}
+                    	if(e.getButton() == MouseEvent.BUTTON2){
+                    		setBackground(Color.YELLOW);
+                    		MazeMapMaker.map[x][y] = 2;
+                    	}
                     	if(e.getButton() == MouseEvent.BUTTON3){
 	                        setBackground(Color.GRAY);
 	                        MazeMapMaker.map[x][y] = 0;
