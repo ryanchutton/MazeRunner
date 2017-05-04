@@ -1,5 +1,6 @@
 package actor;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,7 @@ import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
 
 public class MotionWithKeyBindings {
 
@@ -71,7 +73,7 @@ public class MotionWithKeyBindings {
 			// Move the component
 			component.setLocation(nextX, nextY);
 			JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game", JOptionPane.INFORMATION_MESSAGE);
-			
+			new menu.MainMenu();
 			
 		}
 	}
