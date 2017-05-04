@@ -74,6 +74,7 @@ public class MotionWithKeyBindings {
 			component.setLocation(nextX, nextY);
 			JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game", JOptionPane.INFORMATION_MESSAGE);
 			new menu.MainMenu();
+			//t
 			
 		}
 	}
