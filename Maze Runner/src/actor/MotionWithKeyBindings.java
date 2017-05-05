@@ -1,20 +1,14 @@
 package actor;
 
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
- 
 import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
-import javax.swing.SwingUtilities;
 
 public class MotionWithKeyBindings {
 
@@ -103,7 +97,7 @@ public class MotionWithKeyBindings {
 
 	@SuppressWarnings({ "serial" })
 	private class ButtonAction extends AbstractAction implements ActionListener {
-		String name;
+		private String name;
 		public ButtonAction(String name) {
 			super(name);
 			this.name = name;
