@@ -65,7 +65,7 @@ public class Maze extends JFrame {
 				System.exit(0);
 			}
 		});
-
+ 
 		this.setLocationRelativeTo(null);
 
 		// Create player
