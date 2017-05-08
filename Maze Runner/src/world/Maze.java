@@ -84,7 +84,13 @@ public class Maze extends JFrame {
 				} else {
 					tile.setBackground(Color.WHITE);
 					if (map[x][y] == 2) {
-						tile.setBackground(Color.YELLOW);
+						tile.setBackground(Color.CYAN);
+					}
+					if (map[x][y] == 3) {
+						tile.setBackground(Color.ORANGE);
+					}
+					if (map[x][y] == 4) {
+						tile.setBackground(Color.PINK);
 					}
 					tile.setWall(false);
 					if (x == 0) {
