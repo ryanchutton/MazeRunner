@@ -7,12 +7,20 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Player extends JPanel {
 	public int x, y;
+	public static int keys = 0;
 
 	public Player() {
 		this.setBackground(Color.getHSBColor(0.3f, 0.3f, 1));
 		this.setSize(world.Maze.panelSize, world.Maze.panelSize);
 	}
 
+	public static void addKey(int i) {
+		keys += i;
+	}
+	
+	public static void removeKey(int i) {
+		keys -= i;
+	}
 	/**
 	 * public void moveLeft() { if (x > 0 && world.Maze.map[x - 1][y] == 1) {
 	 * this.setLocation(this.getX() - 25, this.getY()); x--; } }

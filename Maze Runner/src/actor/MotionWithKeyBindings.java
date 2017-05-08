@@ -1,5 +1,6 @@
 package actor;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,9 +11,13 @@ import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 
+import world.Maze;
+import world.Tile;
+
 public class MotionWithKeyBindings {
 
 	protected JComponent component;
+	world.Maze m;
 
 	public MotionWithKeyBindings(JComponent component) {
 		this.component = component;
@@ -20,7 +25,7 @@ public class MotionWithKeyBindings {
 
 	public MotionWithKeyBindings() {
 	}
-	
+
 	public void move(int deltaX, int deltaY) {
 
 		int componentWidth = component.getSize().width;
@@ -54,22 +59,46 @@ public class MotionWithKeyBindings {
 			nextY = (int) component.getLocation().y;
 		}
 
-		if (world.Maze.map[(nextX - 23) / world.Maze.panelSize][(nextY - 25) / world.Maze.panelSize] == 1)
+		int x = (nextX - 23) / world.Maze.panelSize;
+		int y = (nextY - 25) / world.Maze.panelSize;
+
+		if (world.Maze.map[x][y] == 1)
 
 		{
 			// Move the component
 			component.setLocation(nextX, nextY);
-			
+
 		}
-		
-		if (world.Maze.map[(nextX - 23) / world.Maze.panelSize][(nextY - 25) / world.Maze.panelSize] == 2)
+
+		if (world.Maze.map[x][y] == 2)
 
 		{
-			// Move the component
 			component.setLocation(nextX, nextY);
-			JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game",
+					JOptionPane.INFORMATION_MESSAGE);
 			new menu.MainMenu();
-			
+		}
+
+		if (world.Maze.map[x][y] == 3)
+
+		{
+			Tile tile = new Tile(x, y);
+			tile.setBackground(Color.WHITE);
+			world.Maze.map[x][y] = 1;
+			tile.setVisible(true);
+			actor.Player.addKey(1);
+			component.setLocation(nextX, nextY);
+		}
+
+		if (world.Maze.map[x][y] == 4)
+
+		{
+			if (actor.Player.keys > 0) {
+				world.Tile tile = new world.Tile(x, y);
+				tile.setBackground(Color.WHITE);
+				actor.Player.removeKey(1);
+				component.setLocation(nextX, nextY);
+			}
 		}
 	}
 
@@ -98,11 +127,12 @@ public class MotionWithKeyBindings {
 	@SuppressWarnings({ "serial" })
 	private class ButtonAction extends AbstractAction implements ActionListener {
 		private String name;
+
 		public ButtonAction(String name) {
 			super(name);
 			this.name = name;
 		}
-		
+
 		public void actionPerformed(ActionEvent e) {
 			actor.MotionWithKeyBindings c = new actor.MotionWithKeyBindings();
 			java.lang.reflect.Method method;
@@ -118,7 +148,7 @@ public class MotionWithKeyBindings {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
+
 		}
 
 	}
@@ -134,7 +164,7 @@ public class MotionWithKeyBindings {
 		return action;
 
 	}
-	
+
 	public ButtonAction addAction(String name, String methodName) {
 		ButtonAction action = new ButtonAction(methodName);
 

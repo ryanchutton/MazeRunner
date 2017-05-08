@@ -27,6 +27,7 @@ public class Maze extends JFrame {
 		this.setTitle("Maze");
 		this.setLayout(null);
 		
+		
 		/**
 		 * this.addKeyListener(new KeyListener(){
 		 * 
@@ -80,25 +81,28 @@ public class Maze extends JFrame {
 				tile.setSize(panelSize, panelSize);
 				tile.setLocation((x * panelSize) + 23, (y * panelSize) + 25);
 				if (map[x][y] == 0) {
-					tile.setBackground(Color.GRAY);
+					tile.setBackground(Color.GRAY);//wall
 				} else {
-					tile.setBackground(Color.WHITE);
+					tile.setBackground(Color.WHITE);//corridor
 					if (map[x][y] == 2) {
-						tile.setBackground(Color.CYAN);
+						tile.setBackground(Color.CYAN);//token
 					}
 					if (map[x][y] == 3) {
 						tile.setBackground(Color.ORANGE);//key
 					}
 					if (map[x][y] == 4) {
-						tile.setBackground(Color.PINK);//recepticle
+						tile.setBackground(Color.GREEN);//door
 					}
 					if (map[x][y] == 5) {
-						tile.setBackground(Color.RED); //block
+						tile.setBackground(Color.PINK);//receptacle
 					}
 					if (map[x][y] == 6) {
-						tile.setBackground(Color.BLUE);//block
+						tile.setBackground(Color.RED); //block
 					}
 					if (map[x][y] == 7) {
+						tile.setBackground(Color.BLUE);//block
+					}
+					if (map[x][y] == 8) {
 						tile.setBackground(Color.YELLOW);//block
 					}
 					tile.setWall(false);
