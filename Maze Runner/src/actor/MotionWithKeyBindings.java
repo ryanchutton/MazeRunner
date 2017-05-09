@@ -87,20 +87,6 @@ public class MotionWithKeyBindings {
 			menu.MainMenu.m.dispose();
 			menu.MainMenu.m = new world.Maze(str, nextX, nextY);
 			actor.Player.addKey(1);
-			
-			
-			/**
-			Tile tile = new Tile(x, y);
-			tile.setSize(world.Maze.panelSize, world.Maze.panelSize);
-			tile.setLocation(nextX, nextY);
-			tile.setBackground(Color.WHITE);
-			tile.setWall(false);
-			tile.setVisible(true);
-			menu.MainMenu.m.add(tile);
-			menu.MainMenu.m.revalidate();
-			menu.MainMenu.m.repaint();
-			menu.MainMenu.m.setVisible(true);
-			*/
 		}
 
 		if (world.Maze.map[x][y] == 4)
@@ -192,7 +178,7 @@ public class MotionWithKeyBindings {
 	}
 
 	public static void addMotionSupport(JComponent component) {
-		int delta = 25;
+		int delta = 15;
 		MotionWithKeyBindings motion = new MotionWithKeyBindings(component);
 		motion.addAction("A", -delta, 0);
 		motion.addAction("D", delta, 0);
