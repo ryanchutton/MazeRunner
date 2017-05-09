@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 public class Player extends JPanel {
 	public int x, y;
 	public static int keys = 0;
-
+	
 	public Player() {
 		this.setBackground(Color.getHSBColor(0.3f, 0.3f, 1));
 		this.setSize(world.Maze.panelSize, world.Maze.panelSize);

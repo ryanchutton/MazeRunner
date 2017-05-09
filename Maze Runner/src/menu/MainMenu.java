@@ -31,6 +31,7 @@ public class MainMenu {
     int menuY = 460; //Button/item location on display
     int WIDTH = 490;
     int HEIGHT = 530;
+    public static world.Maze m;
     
             
 	public MainMenu() {
@@ -53,7 +54,8 @@ public class MainMenu {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				new world.Maze(lvlList.getSelectedItem().toString());
+				m = new world.Maze(lvlList.getSelectedItem().toString(), 23, 25);
+				m.setVisible(true);
 				Menu.setVisible(false);
 			}
         	

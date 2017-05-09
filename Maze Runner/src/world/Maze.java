@@ -20,7 +20,7 @@ public class Maze extends JFrame {
 	public static int endLevelLoc;
 	public static actor.Player p;
 
-	public Maze(String str) {
+	public Maze(String str, int plrX, int plrY) {
 		loadMap(str);
 		this.setResizable(false);
 		this.setSize((columns * panelSize) + 50, (rows * panelSize) + 70);
@@ -107,7 +107,7 @@ public class Maze extends JFrame {
 					}
 					tile.setWall(false);
 					if (x == 0) {
-						p.setLocation((x * panelSize) + 23, (y * panelSize) + 25);
+						p.setLocation(plrX, plrY);
 						p.y = y;
 					}
 					if (x == columns - 1) {
@@ -125,6 +125,10 @@ public class Maze extends JFrame {
 
 	public static void main(String args[]) {
 		new menu.MainMenu();
+	}
+	
+	public void addTile(Tile tile) {
+		
 	}
 
 	@SuppressWarnings("resource")

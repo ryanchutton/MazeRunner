@@ -17,7 +17,6 @@ import world.Tile;
 public class MotionWithKeyBindings {
 
 	protected JComponent component;
-	world.Maze m;
 
 	public MotionWithKeyBindings(JComponent component) {
 		this.component = component;
@@ -27,6 +26,7 @@ public class MotionWithKeyBindings {
 	}
 
 	public void move(int deltaX, int deltaY) {
+		
 
 		int componentWidth = component.getSize().width;
 		int componentHeight = component.getSize().height;
@@ -74,30 +74,44 @@ public class MotionWithKeyBindings {
 
 		{
 			component.setLocation(nextX, nextY);
-			JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game",
-					JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game", JOptionPane.INFORMATION_MESSAGE);
+			menu.MainMenu.m.dispose();
 			new menu.MainMenu();
 		}
 
 		if (world.Maze.map[x][y] == 3)
 
 		{
-			Tile tile = new Tile(x, y);
-			tile.setBackground(Color.WHITE);
 			world.Maze.map[x][y] = 1;
-			tile.setVisible(true);
+			String str = toString(world.Maze.map);
+			menu.MainMenu.m.dispose();
+			menu.MainMenu.m = new world.Maze(str, nextX, nextY);
 			actor.Player.addKey(1);
-			component.setLocation(nextX, nextY);
+			
+			
+			/**
+			Tile tile = new Tile(x, y);
+			tile.setSize(world.Maze.panelSize, world.Maze.panelSize);
+			tile.setLocation(nextX, nextY);
+			tile.setBackground(Color.WHITE);
+			tile.setWall(false);
+			tile.setVisible(true);
+			menu.MainMenu.m.add(tile);
+			menu.MainMenu.m.revalidate();
+			menu.MainMenu.m.repaint();
+			menu.MainMenu.m.setVisible(true);
+			*/
 		}
 
 		if (world.Maze.map[x][y] == 4)
 
 		{
 			if (actor.Player.keys > 0) {
-				world.Tile tile = new world.Tile(x, y);
-				tile.setBackground(Color.WHITE);
+				world.Maze.map[x][y] = 1;
+				String str = toString(world.Maze.map);
+				menu.MainMenu.m.dispose();
+				menu.MainMenu.m = new world.Maze(str, nextX, nextY);
 				actor.Player.removeKey(1);
-				component.setLocation(nextX, nextY);
 			}
 		}
 	}
@@ -186,4 +200,13 @@ public class MotionWithKeyBindings {
 		motion.addAction("S", 0, delta);
 		motion.addAction("E", "attack");
 	}
+	public String toString(int[][] array) {
+		  String aString = "";
+		  for(int row = 0; row < array.length; row++) {
+		     for(int col = 0; col < array[row].length; col++) {
+		        aString += " " + array[row][col];
+		     }
+		  }
+		  return aString;
+		}
 }
