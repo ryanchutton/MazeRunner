@@ -15,7 +15,7 @@ import actor.MotionWithKeyBindings;
 public class Maze extends JFrame {
 	public static int rows = 30;
 	public static int columns = 30;
-	public static int panelSize = 25;
+	public static int panelSize = 15;
 	public static int map[][] = new int[columns][rows];
 	public static int endLevelLoc;
 	public static actor.Player p;
