@@ -178,7 +178,7 @@ public class MotionWithKeyBindings {
 	}
 
 	public static void addMotionSupport(JComponent component) {
-		int delta = 15;
+		int delta = 25;
 		MotionWithKeyBindings motion = new MotionWithKeyBindings(component);
 		motion.addAction("A", -delta, 0);
 		motion.addAction("D", delta, 0);
