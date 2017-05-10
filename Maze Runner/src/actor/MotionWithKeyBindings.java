@@ -26,7 +26,6 @@ public class MotionWithKeyBindings {
 	}
 
 	public void move(int deltaX, int deltaY) {
-		
 
 		int componentWidth = component.getSize().width;
 		int componentHeight = component.getSize().height;
@@ -62,6 +61,19 @@ public class MotionWithKeyBindings {
 		int x = (nextX - 23) / world.Maze.panelSize;
 		int y = (nextY - 25) / world.Maze.panelSize;
 
+		int nextNextX = Math.max(component.getLocation().x + deltaX + deltaX, 0); // going
+																					// x
+																					// or
+																					// y
+																					// direction
+		int nextNextY = Math.max(component.getLocation().y + deltaY + deltaY, 0);
+
+		int nextLocX = (nextNextX - 23) / world.Maze.panelSize; // location that
+																// is in the
+																// direction of
+																// motion
+		int nextLocY = (nextNextY - 25) / world.Maze.panelSize;
+
 		if (world.Maze.map[x][y] == 1)
 
 		{
@@ -74,7 +86,8 @@ public class MotionWithKeyBindings {
 
 		{
 			component.setLocation(nextX, nextY);
-			JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game",
+					JOptionPane.INFORMATION_MESSAGE);
 			menu.MainMenu.m.dispose();
 			new menu.MainMenu();
 		}
@@ -99,6 +112,28 @@ public class MotionWithKeyBindings {
 				menu.MainMenu.m = new world.Maze(str, nextX, nextY);
 				actor.Player.removeKey(1);
 			}
+		}
+		if (world.Maze.map[x][y] == 6)
+
+		{
+			world.Maze.map[x][y] = 1;
+			if (world.Maze.map[nextLocX][y] != 0) {
+				if (deltaX != 0) {
+					world.Maze.map[nextLocX][y] = 6;
+					String str = toString(world.Maze.map);
+					menu.MainMenu.m.dispose();
+					menu.MainMenu.m = new world.Maze(str, nextX, nextY);
+				}
+			}
+			if (world.Maze.map[x][nextLocY] != 0) {
+				if (deltaY != 0) {
+					world.Maze.map[x][nextLocY] = 6;
+					String str = toString(world.Maze.map);
+					menu.MainMenu.m.dispose();
+					menu.MainMenu.m = new world.Maze(str, nextX, nextY);
+				}
+			}
+			
 		}
 	}
 
@@ -186,13 +221,14 @@ public class MotionWithKeyBindings {
 		motion.addAction("S", 0, delta);
 		motion.addAction("E", "attack");
 	}
+
 	public String toString(int[][] array) {
-		  String aString = "";
-		  for(int row = 0; row < array.length; row++) {
-		     for(int col = 0; col < array[row].length; col++) {
-		        aString += " " + array[row][col];
-		     }
-		  }
-		  return aString;
+		String aString = "";
+		for (int row = 0; row < array.length; row++) {
+			for (int col = 0; col < array[row].length; col++) {
+				aString += " " + array[row][col];
+			}
 		}
+		return aString;
+	}
 }

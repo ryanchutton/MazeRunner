@@ -5,10 +5,11 @@ import java.awt.Color;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class Block1 extends Block {
+public class BlockRed extends Block {
 	public int x, y;
 	
-	public Block1() {
+	public BlockRed() {
+		super();
 		this.setBackground(Color.RED);
 	}
 }
