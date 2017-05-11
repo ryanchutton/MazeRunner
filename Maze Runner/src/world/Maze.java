@@ -5,6 +5,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -20,7 +21,7 @@ public class Maze extends JFrame {
 	public static int endLevelLoc;
 	public static actor.Player p;
 
-	public Maze(String str, int plrX, int plrY) {
+	public Maze(String str, int plrX, int plrY) throws IOException {
 		loadMap(str);
 		this.setResizable(false);
 		this.setSize((columns * panelSize) + 50, (rows * panelSize) + 70);

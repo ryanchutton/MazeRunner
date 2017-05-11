@@ -1,7 +1,16 @@
 package actor;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -9,8 +18,16 @@ public class Player extends JPanel {
 	public int x, y;
 	public static int keys = 0;
 	
-	public Player() {
-		this.setBackground(Color.getHSBColor(0.3f, 0.3f, 1));
+	public Player() throws IOException {
+		this.setLayout(null);
+		//BufferedImage knight = ImageIO.read(new File("data\\sprites\\actor\\player.png"));
+		BufferedImage knight = new BufferedImage( 25, 25, BufferedImage.TYPE_INT_RGB);
+		Graphics2D graphic2D = knight.createGraphics();
+		
+		JLabel picLabel = new JLabel(new ImageIcon(knight));
+		picLabel.setPreferredSize(new Dimension(25, 25));
+		picLabel.setBounds(0, 0, 25, 25);
+		add(picLabel);
 		this.setSize(world.Maze.panelSize, world.Maze.panelSize);
 	}
 

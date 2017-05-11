@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import javax.swing.AbstractAction;
 import javax.swing.InputMap;
@@ -25,7 +26,7 @@ public class MotionWithKeyBindings {
 	public MotionWithKeyBindings() {
 	}
 
-	public void move(int deltaX, int deltaY) {
+	public void move(int deltaX, int deltaY) throws IOException {
 
 		int componentWidth = component.getSize().width;
 		int componentHeight = component.getSize().height;
@@ -154,7 +155,12 @@ public class MotionWithKeyBindings {
 		}
 
 		public void actionPerformed(ActionEvent e) {
-			move(deltaX, deltaY);
+			try {
+				move(deltaX, deltaY);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 
 	}

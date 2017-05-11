@@ -4,6 +4,7 @@ package menu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -54,7 +55,12 @@ public class MainMenu {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				m = new world.Maze(lvlList.getSelectedItem().toString(), 23, 25);
+				try {
+					m = new world.Maze(lvlList.getSelectedItem().toString(), 23, 25);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				m.setVisible(true);
 				Menu.setVisible(false);
 			}
