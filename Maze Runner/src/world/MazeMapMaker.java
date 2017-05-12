@@ -64,7 +64,7 @@ public class MazeMapMaker extends JFrame{
     }
     
     public void getMapList(){
-    	for(int i = 0; i < 99; i++){
+    	for(int i = 1; i < 99; i++){
     		File map = new File("data\\maps\\" + "./Level "+i+".map");
     		if(map.exists()){
     			System.out.println("Level "+i+" exists");
@@ -93,7 +93,7 @@ public class MazeMapMaker extends JFrame{
     
     public void saveMap(){
         try{
-        PrintWriter writer = new PrintWriter("data\\maps\\" + "Level "+level+".map", "UTF-8");
+        PrintWriter writer = new PrintWriter("data\\maps\\" + "Level "+ (level + 1) +".map", "UTF-8");
         for(int y = 0; y < columns; y++){
             for(int x = 0; x < rows; x++){
                 writer.print(map[x][y]);
