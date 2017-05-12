@@ -20,9 +20,11 @@ public class Player extends JPanel {
 	
 	public Player() throws IOException {
 		this.setLayout(null);
-		//BufferedImage knight = ImageIO.read(new File("data\\sprites\\actor\\player.png"));
-		BufferedImage knight = new BufferedImage( 25, 25, BufferedImage.TYPE_INT_RGB);
-		Graphics2D graphic2D = knight.createGraphics();
+		BufferedImage in = ImageIO.read(new File("data\\sprites\\actor\\player.png"));
+		BufferedImage knight = new BufferedImage( in.getWidth(), in.getHeight(), BufferedImage.	TYPE_INT_ARGB);
+		Graphics2D g = knight.createGraphics();
+		g.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
+		g.dispose();
 		
 		JLabel picLabel = new JLabel(new ImageIcon(knight));
 		picLabel.setPreferredSize(new Dimension(25, 25));
