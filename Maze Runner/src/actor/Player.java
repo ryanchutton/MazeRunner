@@ -40,6 +40,8 @@ public class Player extends JPanel {
 	public static void removeKey(int i) {
 		keys -= i;
 	}
+	
+	
 	/**
 	 * public void moveLeft() { if (x > 0 && world.Maze.map[x - 1][y] == 1) {
 	 * this.setLocation(this.getX() - 25, this.getY()); x--; } }

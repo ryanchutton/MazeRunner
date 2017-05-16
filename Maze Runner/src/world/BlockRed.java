@@ -1,4 +1,4 @@
-package actor;
+package world;
 
 import java.awt.Color;
 

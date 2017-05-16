@@ -30,12 +30,13 @@ public class MainMenu {
     int menuWidth = 100; //Width of each button/item on display
     int menuHeight = 30;//Height of each button/item on display
     int menuY = 460; //Button/item location on display
-    int WIDTH = 490;
+    int WIDTH = 590;
     int HEIGHT = 530;
     public static world.Maze m;
     
             
 	public MainMenu() {
+		
     	//Load map list
     	getMapList();
     	lvlList = new JComboBox<String>(mapList.toArray(new String[mapList.size()]));
@@ -46,7 +47,7 @@ public class MainMenu {
         Menu.setLayout(null);
         Menu.setLocationRelativeTo(null);
         Menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+       
         //Start Button Variables
         Start.setSize(menuWidth,menuHeight);
         Start.setLocation(10, menuY);
@@ -86,6 +87,7 @@ public class MainMenu {
         lvlList.setLocation(230, menuY);
         Menu.add(lvlList);
         
+        
         //Exit Button Variables
         Exit.setSize(menuWidth,menuHeight);
         Exit.setLocation(375,menuY);
@@ -105,7 +107,12 @@ public class MainMenu {
         Menu.setVisible(true);
     }
 
-    static boolean levelsExistAlready = false;
+    private void add(JComboBox tileList2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	static boolean levelsExistAlready = false;
 
     public void getMapList(){
     	for(int i = 0; i < 99; i++){
