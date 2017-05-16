@@ -226,6 +226,10 @@ public class MotionWithKeyBindings {
 		motion.addAction("D", delta, 0);
 		motion.addAction("W", 0, -delta);
 		motion.addAction("S", 0, delta);
+		motion.addAction("LEFT", -delta, 0);
+		motion.addAction("RIGHT", delta, 0);
+		motion.addAction("UP", 0, -delta);
+		motion.addAction("DOWN", 0, delta);
 		motion.addAction("E", "attack");
 	}
 
