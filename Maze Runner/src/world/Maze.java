@@ -1,13 +1,20 @@
 package world;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics2D;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import actor.MotionWithKeyBindings;
@@ -27,8 +34,7 @@ public class Maze extends JFrame {
 		this.setSize((columns * panelSize) + 50, (rows * panelSize) + 70);
 		this.setTitle("Maze");
 		this.setLayout(null);
-		
-		
+
 		/**
 		 * this.addKeyListener(new KeyListener(){
 		 * 
@@ -60,14 +66,14 @@ public class Maze extends JFrame {
 		 * 
 		 *           });
 		 */
-		
+
 		this.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				// System.out.println((columns*panelSize)+50+"-"+((rows*panelSize)+70));
 				System.exit(0);
 			}
 		});
- 
+
 		this.setLocationRelativeTo(null);
 
 		// Create player
@@ -81,55 +87,56 @@ public class Maze extends JFrame {
 				Tile tile = new Tile(x, y);
 				tile.setSize(panelSize, panelSize);
 				tile.setLocation((x * panelSize) + 23, (y * panelSize) + 25);
+
 				if (map[x][y] == 0) {
-					tile.setBackground(Color.GRAY);//wall
-				} else {
-					tile.setBackground(Color.WHITE);//corridor
-					if (map[x][y] == 2) {
-						tile.setBackground(Color.CYAN);//token
-					}
-					if (map[x][y] == 3) {
-						tile.setBackground(Color.ORANGE);//key
-					}
-					if (map[x][y] == 4) {
-						tile.setBackground(Color.GREEN);//door
-					}
-					if (map[x][y] == 5) {
-						tile.setBackground(Color.PINK);//receptacle
-					}
-					if (map[x][y] == 6) {
-						tile.setBackground(Color.RED); //block1
-					}
-					if (map[x][y] == 7) {
-						tile.setBackground(Color.BLUE);//block2
-					}
-					if (map[x][y] == 8) {
-						tile.setBackground(Color.YELLOW);//block3
-					}
-					tile.setWall(false);
-					if (x == 0) {
-						p.setLocation(plrX, plrY);
-						p.y = y;
-					}
-					if (x == columns - 1) {
-						endLevelLoc = y;
-					}
+					tile.setBackground(Color.GRAY);// wall
+				}
+				if (map[x][y] == 1) {
+					tile.setBackground(Color.WHITE);// corridor
+				}
+				if (map[x][y] == 2) {
+					tile.setBackground(Color.CYAN);// token
+				}
+				if (map[x][y] == 3) {
+					tile.setBackground(Color.ORANGE);// key
+				}
+				if (map[x][y] == 4) {
+					tile.setBackground(Color.GREEN);// door
+				}
+				if (map[x][y] == 5) {
+					tile.setBackground(Color.PINK);// receptacle
+				}
+				if (map[x][y] == 6) {
+					tile.setBackground(Color.RED); // block1
+				}
+				if (map[x][y] == 7) {
+					tile.setBackground(Color.BLUE);// block2
+				}
+				if (map[x][y] == 8) {
+					tile.setBackground(Color.YELLOW);// block3
+				}
+				tile.setWall(false);
+				if (x == 0) {
+					p.setLocation(plrX, plrY);
+					p.y = y;
+				}
+				if (x == columns - 1) {
+					endLevelLoc = y;
 				}
 
-				tile.setVisible(true);
-				this.add(tile);
-			}
+			tile.setVisible(true);
+			this.add(tile);
 		}
-		MotionWithKeyBindings.addMotionSupport(p);
-		this.setVisible(true);
+	}MotionWithKeyBindings.addMotionSupport(p);this.setVisible(true);
+
 	}
 
 	public static void main(String args[]) {
 		new menu.MainMenu();
 	}
-	
+
 	public void addTile(Tile tile) {
-		
+
 	}
 
 	@SuppressWarnings("resource")
