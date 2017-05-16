@@ -121,8 +121,14 @@ public class MotionWithKeyBindings {
 			if (world.Maze.map[nextLocX][y] != 0) {
 				if (deltaX != 0) {
 					if(world.Maze.map[nextLocX][y] == 5)
+					{
+						world.Recepticle.accRecpt();
+						world.Maze.map[nextLocX][y] = 6;
+					}
+					else{
 					world.Maze.map[nextLocX][y] = 6;
-					String str = toString(world.Maze.map);
+					}
+			    	String str = toString(world.Maze.map);
 					menu.MainMenu.m.dispose();
 					menu.MainMenu.m = new world.Maze(str, nextX, nextY);
 				}

@@ -3,13 +3,13 @@ package world;
 
 public class Recepticle {
 	
-	public int recepticle = 0;
+	public static int recepticle = 0;
 	
- 		public void accRecpt(){
+ 		public static void accRecpt(){
  			recepticle ++;
  		}
  		
- 		public void deaccRecept(){
+ 		public static void deaccRecept(){
  			recepticle--;
  		}		
 }
