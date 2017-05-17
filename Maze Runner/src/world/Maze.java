@@ -2,7 +2,9 @@ package world;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
@@ -16,89 +18,69 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
+import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class Maze extends JFrame {
+public class Maze {
 	public static int rows = 30;
 	public static int columns = 30;
 	public static int panelSize = 25;
 	public static int map[][] = new int[columns][rows];
 	public static int endLevelLoc;
-	public static actor.Player p;
 
-	public Maze(String str, int plrX, int plrY) throws IOException {
+	public Maze(String str) throws IOException {
 		loadMap(str);
-		this.setResizable(false);
-		this.setSize((columns * panelSize) + 50, (rows * panelSize) + 70);
-		this.setTitle("Maze");
-		this.setLayout(null);
 
-		this.addWindowListener(new WindowAdapter() {
-			public void windowClosing(WindowEvent e) {
-				// System.out.println((columns*panelSize)+50+"-"+((rows*panelSize)+70));
-				System.exit(0);
-			}
-		});
+	}
 
-		this.setLocationRelativeTo(null);
-
-		// Create player
-		p = new actor.Player();
-		p.setVisible(true);
-		this.add(p);
-
+	public void paint(Graphics g) {
+		Graphics2D g2d = (Graphics2D) g;
 		// Color map
 		for (int y = 0; y < columns; y++) {
 			for (int x = 0; x < rows; x++) {
-				Tile tile = new Tile(x, y);
-				tile.setSize(panelSize, panelSize);
-				tile.setLocation((x * panelSize), (y * panelSize));
+				BufferedImage tile = new BufferedImage(panelSize, panelSize, BufferedImage.TYPE_INT_ARGB);
+				Graphics color = tile.createGraphics();
 
 				if (map[x][y] == 0) {
-					tile.setBackground(Color.GRAY);// wall
+					//tile.setBackground(Color.GRAY);// wall
+					color.setColor(Color.GRAY);
+					color.fillRect(0, 0, panelSize, panelSize);
 				}
 				if (map[x][y] == 1) {
-					tile.setBackground(Color.WHITE);// corridor
+					//tile.setBackground(Color.WHITE);// corridor
 				}
 				if (map[x][y] == 2) {
-					tile.setBackground(Color.CYAN);// token
+					//tile.setBackground(Color.CYAN);// token
 				}
 				if (map[x][y] == 3) {
-					tile.setBackground(Color.ORANGE);// key
+					//tile.setBackground(Color.ORANGE);// key
 				}
 				if (map[x][y] == 4) {
-					tile.setBackground(Color.GREEN);// door
+					//tile.setBackground(Color.GREEN);// door
 				}
 				if (map[x][y] == 5) {
-					tile.setBackground(Color.PINK);// receptacle
+					//tile.setBackground(Color.PINK);// receptacle
 				}
 				if (map[x][y] == 6) {
-					tile.setBackground(Color.RED); // block1
+					//tile.setBackground(Color.RED); // block1
 				}
 				if (map[x][y] == 7) {
-					tile.setBackground(Color.BLUE);// block2
+					//tile.setBackground(Color.BLUE);// block2
 				}
 				if (map[x][y] == 8) {
-					tile.setBackground(Color.YELLOW);// block3
+					//tile.setBackground(Color.YELLOW);// block3
 				}
-				tile.setWall(false);
+				//tile.setWall(false);
 				if (x == 0) {
-					p.setLocation(plrX, plrY);
-					p.y = y;
 				}
 				if (x == columns - 1) {
 					endLevelLoc = y;
 				}
 
-			tile.setVisible(true);
-			this.add(tile);
+				g2d.drawImage(tile, (x * panelSize), (y * panelSize), 25, 25, null);
+
+			}
 		}
-	}this.setVisible(true);
-
-	}
-
-	public void addTile(Tile tile) {
 
 	}
 

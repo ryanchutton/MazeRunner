@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 public class Game extends JPanel {
 
 	public static Game game = new Game();
-	public static int panelSize = 25, frameWidth = 500, frameHeight = 500;
+	public static int frameWidth = 500, frameHeight = 500;
 	public static actor.Player p;
 	public static actor.KeyManager key;
 	public static world.Maze m;
@@ -26,11 +26,10 @@ public class Game extends JPanel {
 	public static void main(String[] args) throws IOException, InterruptedException {
 		p = new actor.Player();
 		key = new actor.KeyManager();
-		m = new world.Maze(str, plrX, plrY)
+		m = new world.Maze("data\\maps\\" + "Level "+"0"+".map");
 		JFrame frame = new JFrame("Maze Runner");
+		frame.setSize(750, 750);
 		frame.add(game);
-		frame.add
-		frame.setSize(500, 500);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
