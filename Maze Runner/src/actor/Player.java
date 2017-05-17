@@ -36,23 +36,48 @@ public class Player extends JPanel {
 		if (window.Game.key.keyLeft) {
 			deltaX -= 2;
 		}
-		
+
 		if (window.Game.key.keyUp) {
 			deltaY -= 2;
 		}
 		if (window.Game.key.keyDown) {
 			deltaY += 2;
 		}
-		
+
 		move(deltaX, deltaY);
-		
+
 		deltaX = 0;
 		deltaY = 0;
 	}
 
 	public void move(int x, int y) {
-		this.x = x + this.x;
-		this.y = y + this.y;
+		int nextX = x + this.x;
+		int nextY = y + this.y;
+
+		int tileX = nextX / 25;
+		int tileY = nextY / 25;
+
+		if (true) {
+			if (world.Maze.map[tileX + 1][tileY + 1] == 0) {
+				System.out.println(tileX + ", " + tileY);
+			} else if (x < 0) {
+				if (world.Maze.map[tileX + 1][tileY] == 0) {
+					System.out.println(tileX + ", " + tileY);
+				}
+			} else if (y < 0) {
+				if (world.Maze.map[tileX][tileY - 1] == 0) {
+					System.out.println(tileX + ", " + tileY);
+				}
+			} else if (x < 0 && y < 0) {
+				if (world.Maze.map[tileX - 1][tileY - 1] == 0) {
+					System.out.println(tileX + ", " + tileY);
+				}
+			} else {
+				this.x = nextX;
+				this.y = nextY;
+			}
+		}
+
 	}
 
 	public static void addKey(int i) {
@@ -67,7 +92,7 @@ public class Player extends JPanel {
 		Graphics2D g2d = (Graphics2D) g;
 		keyKeys();
 		g2d.drawImage(knightDrawn, x, y, 25, 25, null);
-		
+
 	}
 
 	/**

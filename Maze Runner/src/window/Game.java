@@ -20,13 +20,14 @@ public class Game extends JPanel {
 
 	public void paint(Graphics g) {
 		super.paint(g);
+		m.paint(g);
 		p.paint(g);
 	}
 
 	public static void main(String[] args) throws IOException, InterruptedException {
 		p = new actor.Player();
 		key = new actor.KeyManager();
-		m = new world.Maze("data\\maps\\" + "Level "+"0"+".map");
+		m = new world.Maze("data\\maps\\" + "Level "+"1"+".map");
 		JFrame frame = new JFrame("Maze Runner");
 		frame.setSize(750, 750);
 		frame.add(game);
