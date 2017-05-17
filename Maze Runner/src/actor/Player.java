@@ -12,13 +12,15 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class Player extends JPanel {
-	public int x = 0, y = 0, deltaX = 0, deltaY = 0;
+	public int x = 0, y = 0;
 	public static int keys = 0;
 	private BufferedImage knightDrawn;
+	private world.Tile tile;
 
 	public Player() throws IOException {
 		BufferedImage in = ImageIO.read(new File("data\\sprites\\actor\\player.png"));
@@ -30,54 +32,67 @@ public class Player extends JPanel {
 	}
 
 	public void keyKeys() {
+		int deltaX = 0, deltaY = 0;
 		if (window.Game.key.keyRight) {
-			deltaX += 2;
+			deltaX += 25;
 		}
 		if (window.Game.key.keyLeft) {
-			deltaX -= 2;
+			deltaX -= 25;
 		}
 
 		if (window.Game.key.keyUp) {
-			deltaY -= 2;
+			deltaY -= 25;
 		}
 		if (window.Game.key.keyDown) {
-			deltaY += 2;
+			deltaY += 25;
 		}
 
 		move(deltaX, deltaY);
-
-		deltaX = 0;
-		deltaY = 0;
 	}
 
-	public void move(int x, int y) {
-		int nextX = x + this.x;
-		int nextY = y + this.y;
+	public void move(int deltaX, int deltaY) {
+		boolean go = true;
+
+		int nextX = deltaX + this.x;
+		int nextY = deltaY + this.y;
 
 		int tileX = nextX / 25;
 		int tileY = nextY / 25;
 
-		if (true) {
-			if (world.Maze.map[tileX + 1][tileY + 1] == 0) {
-				System.out.println(tileX + ", " + tileY);
-			} else if (x < 0) {
-				if (world.Maze.map[tileX + 1][tileY] == 0) {
-					System.out.println(tileX + ", " + tileY);
-				}
-			} else if (y < 0) {
-				if (world.Maze.map[tileX][tileY - 1] == 0) {
-					System.out.println(tileX + ", " + tileY);
-				}
-			} else if (x < 0 && y < 0) {
-				if (world.Maze.map[tileX - 1][tileY - 1] == 0) {
-					System.out.println(tileX + ", " + tileY);
-				}
-			} else {
+		if (tileX < 0) {
+			go = false;
+		}
+
+		if (tileY < 0) {
+			go = false;
+		}
+		if (go) {
+			if (world.Maze.map[tileX][tileY] == 1) {
 				this.x = nextX;
 				this.y = nextY;
 			}
-		}
+			if (world.Maze.map[tileX][tileY] == 2) {
+				this.x = nextX;
+				this.y = nextY;
+				JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game",
+						JOptionPane.INFORMATION_MESSAGE);
+				window.Game.frame.dispose();
+				new window.Game();
 
+			}
+			if (world.Maze.map[tileX][tileY] == 3) {
+				world.Maze.map[tileX][tileY] = 1;
+				tile = new world.Tile(Color.WHITE, nextX, nextY);
+				actor.Player.addKey(1);
+			}
+			if (world.Maze.map[tileX][tileY] == 4) {
+				if (actor.Player.keys > 0) {
+					world.Maze.map[tileX][tileY] = 1;
+					tile = new world.Tile(Color.WHITE, nextX, nextY);
+					actor.Player.removeKey(1);
+				}
+			}
+		}
 	}
 
 	public static void addKey(int i) {
@@ -91,6 +106,9 @@ public class Player extends JPanel {
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 		keyKeys();
+		if (tile != null) {
+			tile.paint(g2d);
+		}
 		g2d.drawImage(knightDrawn, x, y, 25, 25, null);
 
 	}

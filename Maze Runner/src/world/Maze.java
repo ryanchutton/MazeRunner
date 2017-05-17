@@ -48,27 +48,43 @@ public class Maze {
 				}
 				if (map[x][y] == 1) {
 					//tile.setBackground(Color.WHITE);// corridor
+					color.setColor(Color.WHITE);
+					color.fillRect(0, 0, panelSize, panelSize);
 				}
 				if (map[x][y] == 2) {
 					//tile.setBackground(Color.CYAN);// token
+					color.setColor(Color.CYAN);
+					color.fillRect(0, 0, panelSize, panelSize);
 				}
 				if (map[x][y] == 3) {
 					//tile.setBackground(Color.ORANGE);// key
+					color.setColor(Color.ORANGE);
+					color.fillRect(0, 0, panelSize, panelSize);
 				}
 				if (map[x][y] == 4) {
 					//tile.setBackground(Color.GREEN);// door
+					color.setColor(Color.GREEN);
+					color.fillRect(0, 0, panelSize, panelSize);
 				}
 				if (map[x][y] == 5) {
 					//tile.setBackground(Color.PINK);// receptacle
+					color.setColor(Color.PINK);
+					color.fillRect(0, 0, panelSize, panelSize);
 				}
 				if (map[x][y] == 6) {
 					//tile.setBackground(Color.RED); // block1
+					color.setColor(Color.RED);
+					color.fillRect(0, 0, panelSize, panelSize);
 				}
 				if (map[x][y] == 7) {
 					//tile.setBackground(Color.BLUE);// block2
+					color.setColor(Color.BLUE);
+					color.fillRect(0, 0, panelSize, panelSize);
 				}
 				if (map[x][y] == 8) {
 					//tile.setBackground(Color.YELLOW);// block3
+					color.setColor(Color.YELLOW);
+					color.fillRect(0, 0, panelSize, panelSize);
 				}
 				//tile.setWall(false);
 				if (x == 0) {
@@ -77,7 +93,7 @@ public class Maze {
 					endLevelLoc = y;
 				}
 
-				g2d.drawImage(tile, (x * panelSize), (y * panelSize), 25, 25, null);
+				g2d.drawImage(tile, (x * panelSize), (y * panelSize), panelSize, panelSize, null);
 
 			}
 		}
