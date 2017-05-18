@@ -26,10 +26,16 @@ public class Game extends JPanel {
 		m.paint(g);
 		p.paint(g);
 	}
-	
+
 	public static void loadMap() throws IOException {
 		str = JOptionPane.showInputDialog(null, "Please enter level number.");
-		m = new world.Maze("data\\maps\\" + "Level "+ str +".map"); //"data\\maps\\" + "Level "+"1"+".map"
+		if (str.length() < 1) {
+			loadMap();
+		}
+		m = new world.Maze("data\\maps\\" + "Level " + str + ".map"); // "data\\maps\\"
+																		// +
+																		// "Level
+																		// "+"1"+".map"
 	}
 
 	public static void main(String[] args) throws IOException, InterruptedException {
@@ -42,7 +48,7 @@ public class Game extends JPanel {
 		frame.add(game);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		frame.addKeyListener(key);
 
 		while (true) {
