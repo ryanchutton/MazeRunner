@@ -106,13 +106,13 @@ public class Game extends JFrame {
 			}
         	
         });	
-       /** 
-		while (true) {
+       
+        while (true) {
 			game.repaint();
 			key.update();
 			Thread.sleep(125);
 		}
-		*/
+		
 	}
 	
 	
