@@ -28,7 +28,7 @@ public class Maze {
 	public static int map[][] = new int[columns][rows];
 	public static int endLevelLoc;
 
-	public Maze(String str) throws IOException {
+	public Maze(String str) throws IOException  {
 		loadMap(str);
 
 	}
