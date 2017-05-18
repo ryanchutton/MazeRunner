@@ -16,10 +16,10 @@ public class KeyManager extends KeyAdapter
     public boolean keyDown = false;
     public boolean keyRight = false;
     public boolean keyLeft = false;
-    public boolean attackUp = false;
-    public boolean attackDown = false;
-    public boolean attackRight = false;
-    public boolean attackLeft = false;
+    public boolean arrowUp = false;
+    public boolean arrowDown = false;
+    public boolean arrowRight = false;
+    public boolean arrowLeft = false;
     public boolean space = false; // pick up
     
    
@@ -38,10 +38,10 @@ public class KeyManager extends KeyAdapter
         keyDown = keys[KeyEvent.VK_S];
         keyRight = keys[KeyEvent.VK_D];
         keyLeft = keys[KeyEvent.VK_A];
-        attackUp = keys[KeyEvent.VK_UP];
-        attackDown = keys[KeyEvent.VK_DOWN];
-        attackRight = keys[KeyEvent.VK_RIGHT];
-        attackLeft = keys[KeyEvent.VK_LEFT];               
+        arrowUp = keys[KeyEvent.VK_UP];
+        arrowDown = keys[KeyEvent.VK_DOWN];
+        arrowRight = keys[KeyEvent.VK_RIGHT];
+        arrowLeft = keys[KeyEvent.VK_LEFT];               
     }
     
     /**

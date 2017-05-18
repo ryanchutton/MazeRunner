@@ -34,17 +34,17 @@ public class Player extends JPanel {
 
 	public void keyKeys() {
 		int deltaX = 0, deltaY = 0;
-		if (window.Game.key.keyRight) {
+		if (window.Game.key.keyRight || window.Game.key.arrowRight) {
 			deltaX += 25;
 		}
-		if (window.Game.key.keyLeft) {
+		if (window.Game.key.keyLeft || window.Game.key.arrowLeft) {
 			deltaX -= 25;
 		}
 
-		if (window.Game.key.keyUp) {
+		if (window.Game.key.keyUp || window.Game.key.arrowUp) {
 			deltaY -= 25;
 		}
-		if (window.Game.key.keyDown) {
+		if (window.Game.key.keyDown || window.Game.key.arrowDown) {
 			deltaY += 25;
 		}
 
