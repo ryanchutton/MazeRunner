@@ -77,7 +77,6 @@ public class Player extends JPanel {
 				JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game",
 						JOptionPane.INFORMATION_MESSAGE);
 				window.Game.frame.dispose();
-				new window.Game();
 
 			}
 			if (world.Maze.map[tileX][tileY] == 3) {
