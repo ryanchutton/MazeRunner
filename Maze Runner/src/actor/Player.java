@@ -23,6 +23,7 @@ public class Player extends JPanel {
 	private world.Tile tile;
 
 	public Player() throws IOException {
+		//creates the player sprite
 		BufferedImage in = ImageIO.read(new File("data\\sprites\\actor\\player.png"));
 		BufferedImage knight = new BufferedImage(in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g = knight.createGraphics();
