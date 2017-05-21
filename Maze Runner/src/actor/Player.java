@@ -21,9 +21,10 @@ public class Player extends JPanel {
 	public static int keys = 0;
 	private BufferedImage knightDrawn;
 	private world.Tile tile;
+	private world.Tile tileBlock;
 
 	public Player() throws IOException {
-		//creates the player sprite
+		// creates the player sprite
 		BufferedImage in = ImageIO.read(new File("data\\sprites\\actor\\player.png"));
 		BufferedImage knight = new BufferedImage(in.getWidth(), in.getHeight(), BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g = knight.createGraphics();
@@ -92,6 +93,35 @@ public class Player extends JPanel {
 					actor.Player.removeKey(1);
 				}
 			}
+			if (world.Maze.map[tileX][tileY] == 6) {
+				if (deltaX == 0) {
+					world.Maze.map[tileX][tileY] = 1;
+					tile = new world.Tile(Color.WHITE, nextX, nextY);
+					if (deltaY < 0) {
+						world.Maze.map[tileX][tileY - 1] = 6;
+						tileBlock = new world.Tile(Color.RED, nextX, nextY - 25);
+					}
+					if (deltaY > 0) {
+						world.Maze.map[tileX][tileY + 1] = 6;
+						tileBlock = new world.Tile(Color.RED, nextX, nextY + 25);
+					}
+
+				}
+
+				if (deltaY == 0) {
+					world.Maze.map[tileX][tileY] = 1;
+					tile = new world.Tile(Color.WHITE, nextX, nextY);
+					if (deltaX < 0) {
+						world.Maze.map[tileX - 1][tileY] = 6;
+						tileBlock = new world.Tile(Color.RED, nextX - 25, nextY);
+					}
+					if (deltaX > 0) {
+						world.Maze.map[tileX + 1][tileY] = 6;
+						tileBlock = new world.Tile(Color.RED, nextX + 25, nextY);
+					}
+				}
+
+			}
 		}
 	}
 
@@ -109,23 +139,10 @@ public class Player extends JPanel {
 		if (tile != null) {
 			tile.paint(g2d);
 		}
+		if (tileBlock != null) {
+			tileBlock.paint(g2d);
+		}
 		g2d.drawImage(knightDrawn, x, y, 25, 25, null);
 
 	}
-
-	/**
-	 * public void moveLeft() { if (x > 0 && world.Maze.map[x - 1][y] == 1) {
-	 * this.setLocation(this.getX() - 25, this.getY()); x--; } }
-	 * 
-	 * public void moveRight() { if (x < world.Maze.columns - 1 &&
-	 * world.Maze.map[x + 1][y] == 1) { this.setLocation(this.getX() + 25,
-	 * this.getY()); x++; } }
-	 * 
-	 * public void moveUp() { if (y > 0 && world.Maze.map[x][y - 1] == 1) {
-	 * this.setLocation(this.getX(), this.getY() - 25); y--; } }
-	 * 
-	 * public void moveDown() { if (y < world.Maze.rows - 1 &&
-	 * world.Maze.map[x][y + 1] == 1) { this.setLocation(this.getX(),
-	 * this.getY() + 25); y++; } }
-	 */
 }
