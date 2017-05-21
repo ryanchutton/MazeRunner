@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -22,7 +23,7 @@ public class MazeMapMaker extends JFrame{
     int level = 0;
     boolean levelsExistAlready = false;
     
-    public MazeMapMaker(){
+    public MazeMapMaker() throws IOException, InterruptedException{
     	getMapList();
     	getLevelChoice();
     	if(level != -1){
@@ -35,7 +36,12 @@ public class MazeMapMaker extends JFrame{
 	        this.addWindowListener(new WindowAdapter(){
 	            public void windowClosing(WindowEvent e) {
 	                saveMap();
-	                new window.MainMenu();
+	                try {
+						new window.Game();
+					} catch (IOException | InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 	            }
 	        });
 	        
@@ -59,7 +65,7 @@ public class MazeMapMaker extends JFrame{
 	        }
 	        this.setVisible(true);
     	}else{
-    		new window.MainMenu();
+    		new window.Game();
     	}
     }
     

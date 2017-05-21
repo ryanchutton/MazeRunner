@@ -21,12 +21,13 @@ import javax.swing.JPanel;
 
 public class Game extends JFrame {
 
-	public static Game game;		   
+		   
 	public static actor.Player p;
 	public static actor.KeyManager key;
 	public static world.Maze m;
 	private static String str;
-	public static JFrame frame;
+	//public static JFrame frame;
+	public JFrame game = new JFrame("Maze");
     JButton Start = new JButton("Play");
     JButton Exit = new JButton("Exit");
     ImageIcon picture = new ImageIcon("res/Images/MazePicture.png");
@@ -39,10 +40,7 @@ public class Game extends JFrame {
     int WIDTH = 590;
     int HEIGHT = 530;
     
-    public static void main(String[] args)throws IOException, InterruptedException{
-    	Game g = new Game();
-    }
-	
+    
 	public Game() throws IOException, InterruptedException  {
 		
 		//Load map list
@@ -50,36 +48,35 @@ public class Game extends JFrame {
     	lvlList = new JComboBox<String>(mapList.toArray(new String[mapList.size()]));
 		
     	
-		game = new Game();
+		//game = new Game();
 		p = new actor.Player();
 		key = new actor.KeyManager();
 		
 		
-		//frame variables
-		frame = new JFrame("Maze Runner");
-		frame.setSize(WIDTH, HEIGHT);
-		frame.add(game);
-		frame.setVisible(true);
-    	frame.setResizable(false);        
-        frame.setLayout(null);
-        frame.setLocationRelativeTo(null);        
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//game variables
+		game = new JFrame("Maze Runner");
+		game.setSize(WIDTH, HEIGHT);
+		game.setVisible(true);
+    	game.setResizable(false);        
+        game.setLayout(null);
+        game.setLocationRelativeTo(null);        
+		game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		//Level Selector
         lvlList.setSize(menuWidth+35, menuHeight);
         lvlList.setLocation(230, menuY);
-        frame.add(lvlList);
+        game.add(lvlList);
         
         //Display Picture
         imageLabel.setBounds((WIDTH-412)/2, 25, 412, 412);
         imageLabel.setVisible(true);
-        frame.add(imageLabel);
-        frame.setVisible(true);
+        game.add(imageLabel);
+        game.setVisible(true);
         
 		//Exit Button Variables
         Exit.setSize(menuWidth,menuHeight);
         Exit.setLocation(375,menuY);
-        frame.add(Exit);
+        game.add(Exit);
         Exit.addActionListener(new ActionListener(){
 
 			@Override
@@ -91,7 +88,7 @@ public class Game extends JFrame {
 		//Start Button Variables
         Start.setSize(menuWidth,menuHeight);
         Start.setLocation(10, menuY);
-        frame.add(Start);
+        game.add(Start);
         Start.addActionListener(new ActionListener(){
 
 			@Override
@@ -102,7 +99,7 @@ public class Game extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				frame.setVisible(false);
+				game.setVisible(false);
 			}
         	
         });	
@@ -125,7 +122,7 @@ public class Game extends JFrame {
     			System.out.println("Level "+i+" exists");
     			mapList.add("data\\maps\\" + "Level "+i+".map");
     			levelsExistAlready = true;
-    		} 
+    		}    		
     	}
 	}
 	
