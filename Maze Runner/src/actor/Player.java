@@ -1,5 +1,6 @@
 package actor;
 
+import window.endLvl;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -76,10 +77,14 @@ public class Player extends JPanel {
 			if (world.Maze.map[tileX][tileY] == 2) {
 				this.x = nextX;
 				this.y = nextY;
-				JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game",
-						JOptionPane.INFORMATION_MESSAGE);
-				window.Game.frame.dispose();
-
+				
+				
+				
+				/*
+				 * JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game",
+				 *		JOptionPane.INFORMATION_MESSAGE);
+				 *  window.Game.game.dispose();
+                 */
 			}
 			if (world.Maze.map[tileX][tileY] == 3) {
 				world.Maze.map[tileX][tileY] = 1;

@@ -28,7 +28,7 @@ public class Maze extends JFrame {
 	public static int endLevelLoc;
 	public static actor.Player p;
 
-	public Maze(String str, int plrX, int plrY) throws IOException {
+	public Maze(String str, int plrX, int plrY) {
 		loadMap(str);
 		this.setResizable(false);
 		this.setSize((columns * panelSize) + 50, (rows * panelSize) + 70);

@@ -1,5 +1,6 @@
 package window;
 
+
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -27,7 +28,7 @@ public class Game extends JFrame {
 	public static world.Maze m;
 	private static String str;
 	//public static JFrame frame;
-	public JFrame game = new JFrame("Maze");
+	public static JFrame game = new JFrame("Maze");
     JButton Start = new JButton("Play");
     JButton Exit = new JButton("Exit");
     ImageIcon picture = new ImageIcon("res/Images/MazePicture.png");
@@ -93,12 +94,7 @@ public class Game extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				try {
-					m = new world.Maze(lvlList.getSelectedItem().toString());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				m = new world.Maze(lvlList.getSelectedItem().toString());
 				game.setVisible(false);
 			}
         	
