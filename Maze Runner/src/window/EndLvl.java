@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class endLvl extends JFrame {
+public class EndLvl extends JFrame {
 	
 	public static JFrame end = new JFrame("Level Complete");
     JButton nextLvl = new JButton("Next Level");
@@ -27,7 +27,7 @@ public class endLvl extends JFrame {
     int WIDTH = 590;
     int HEIGHT = 530;
     ArrayList<String> mapList = new ArrayList<String>();
-    public endLvl(){
+    public EndLvl(){
     
   //game variables
   		end = new JFrame("Level Complete");

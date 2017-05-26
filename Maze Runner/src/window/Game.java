@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 public class Game extends JFrame {
 
 		   
-	public static actor.Player p;
+	//public static actor.Player p;
 	public static actor.KeyManager key;
 	public static world.Maze m;
 	private static String str;
@@ -50,7 +50,7 @@ public class Game extends JFrame {
 		
     	
 		//game = new Game();
-		p = new actor.Player();
+		//p = new actor.Player();
 		key = new actor.KeyManager();
 		
 		
@@ -125,7 +125,6 @@ public class Game extends JFrame {
 	public void paint(Graphics g) {
 		super.paint(g);
 		m.paint(g);
-		p.paint(g);
 	}
 	
 }

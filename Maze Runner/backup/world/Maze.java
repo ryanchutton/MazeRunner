@@ -1,6 +1,5 @@
 package world;
 
-import window.Game;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -22,34 +21,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class Maze extends JFrame{
+public class Maze {
 	public static int rows = 30;
 	public static int columns = 30;
 	public static int panelSize = 25;
 	public static int map[][] = new int[columns][rows];
 	public static int endLevelLoc;
-	public static actor.Player p;
-	
-	public Maze(String str) {
-		
+
+	public Maze(String str) throws IOException {
 		loadMap(str);
-		this.setResizable(false);
-		this.setSize((columns * panelSize), (rows * panelSize));
-		this.setTitle("Maze");
-		this.setLayout(null);
-		this.setLocationRelativeTo(null);
-		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// Create player
-		try {
-			p = new actor.Player();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		p.setVisible(true);
-		this.add(p);
-        
+
 	}
 
 	public void paint(Graphics g) {
@@ -57,7 +38,6 @@ public class Maze extends JFrame{
 		// Color map
 		for (int y = 0; y < columns; y++) {
 			for (int x = 0; x < rows; x++) {
-				
 				BufferedImage tile = new BufferedImage(panelSize, panelSize, BufferedImage.TYPE_INT_ARGB);
 				Graphics color = tile.createGraphics();
 
@@ -112,20 +92,14 @@ public class Maze extends JFrame{
 				if (x == columns - 1) {
 					endLevelLoc = y;
 				}
-				
-				
-				g2d.drawImage(tile, (x * panelSize), ((y + 1) * panelSize), panelSize, panelSize, null);
-				p.paint(g);
+
+				g2d.drawImage(tile, (x * panelSize), (y * panelSize), panelSize, panelSize, null);
 
 			}
 		}
 
 	}
 
-	public static void main(String args[]) throws IOException, InterruptedException {
-		new window.Game();
-	}
-	
 	@SuppressWarnings("resource")
 	public void loadMap(String str) {
 		try {
@@ -144,7 +118,7 @@ public class Maze extends JFrame{
 			for (int y = 0; y < columns; y++) {
 				for (int x = 0; x < rows; x++) {
 					String mapChar = mapStr.substring(counter, counter + 1);
-					if (!mapChar.equals("\r\n") && !mapChar.equals("\n") && !mapChar.equals("\r")) {// If Character.Digit(mapChar)
+					if (!mapChar.equals("\r\n") && !mapChar.equals("\n") && !mapChar.equals("\r")) {// If
 																									// it's
 																									// a
 																									// number

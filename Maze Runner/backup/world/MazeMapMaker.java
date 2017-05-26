@@ -35,7 +35,7 @@ public class MazeMapMaker extends JFrame{
 	        this.addWindowListener(new WindowAdapter(){
 	            public void windowClosing(WindowEvent e) {
 	                saveMap();
-	                new menu.MainMenu();
+	                new window.MainMenu();
 	            }
 	        });
 	        
@@ -59,7 +59,7 @@ public class MazeMapMaker extends JFrame{
 	        }
 	        this.setVisible(true);
     	}else{
-    		new menu.MainMenu();
+    		new window.MainMenu();
     	}
     }
     
