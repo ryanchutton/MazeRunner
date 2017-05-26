@@ -29,8 +29,9 @@ public class Maze extends JFrame{
 	public static int map[][] = new int[columns][rows];
 	public static int endLevelLoc;
 	public static actor.Player p;
+	public static actor.KeyManager key;
 	
-	public Maze(String str) {
+	public Maze(String str) throws InterruptedException {
 		
 		loadMap(str);
 		this.setResizable(false);
@@ -43,12 +44,19 @@ public class Maze extends JFrame{
 		// Create player
 		try {
 			p = new actor.Player();
+			key = new actor.KeyManager();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		p.setVisible(true);
 		this.add(p);
+		
+		while (true) {
+			this.repaint();
+			key.update();
+			Thread.sleep(125);
+		}
         
 	}
 

@@ -24,7 +24,7 @@ public class Game extends JFrame {
 
 		   
 	//public static actor.Player p;
-	public static actor.KeyManager key;
+	
 	public static world.Maze m;
 	private static String str;
 	//public static JFrame frame;
@@ -51,7 +51,7 @@ public class Game extends JFrame {
     	
 		//game = new Game();
 		//p = new actor.Player();
-		key = new actor.KeyManager();
+		
 		
 		
 		//game variables
@@ -94,17 +94,16 @@ public class Game extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				m = new world.Maze(lvlList.getSelectedItem().toString());
+				try {
+					m = new world.Maze(lvlList.getSelectedItem().toString());
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				game.setVisible(false);
 			}
         	
         });	
-       
-        while (true) {
-			game.repaint();
-			key.update();
-			Thread.sleep(125);
-		}
 		
 	}
 	

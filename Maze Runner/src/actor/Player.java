@@ -36,17 +36,17 @@ public class Player extends JPanel {
 
 	public void keyKeys() {
 		int deltaX = 0, deltaY = 0;
-		if (window.Game.key.keyRight || window.Game.key.arrowRight) {
+		if (world.Maze.key.keyRight || world.Maze.key.arrowRight) {
 			deltaX += 25;
 		}
-		if (window.Game.key.keyLeft || window.Game.key.arrowLeft) {
+		if (world.Maze.key.keyLeft || world.Maze.key.arrowLeft) {
 			deltaX -= 25;
 		}
 
-		if (window.Game.key.keyUp || window.Game.key.arrowUp) {
+		if (world.Maze.key.keyUp || world.Maze.key.arrowUp) {
 			deltaY -= 25;
 		}
-		if (window.Game.key.keyDown || window.Game.key.arrowDown) {
+		if (world.Maze.key.keyDown || world.Maze.key.arrowDown) {
 			deltaY += 25;
 		}
 
@@ -83,7 +83,7 @@ public class Player extends JPanel {
 				/*
 				 * JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game",
 				 *		JOptionPane.INFORMATION_MESSAGE);
-				 *  window.Game.game.dispose();
+				 *  world.Maze.game.dispose();
                  */
 			}
 			if (world.Maze.map[tileX][tileY] == 3) {

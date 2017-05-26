@@ -59,7 +59,12 @@ public class EndLvl extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO find way to get current lvl and iterate
-				m = new world.Maze(mapList.get(0));
+				try {
+					m = new world.Maze(mapList.get(0));
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				end.setVisible(false);
 			}
         	
