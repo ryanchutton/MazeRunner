@@ -1,6 +1,5 @@
 package actor;
 
-import window.EndLvl;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -18,7 +17,7 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class Player extends JPanel {
-	public int x = 25, y = 25;
+	public int x = 0, y = 0;
 	public static int keys = 0;
 	private BufferedImage knightDrawn;
 	private world.Tile tile;
@@ -36,17 +35,17 @@ public class Player extends JPanel {
 
 	public void keyKeys() {
 		int deltaX = 0, deltaY = 0;
-		if (world.Maze.key.keyRight || world.Maze.key.arrowRight) {
+		if (window.Game.key.keyRight || window.Game.key.arrowRight) {
 			deltaX += 25;
 		}
-		if (world.Maze.key.keyLeft || world.Maze.key.arrowLeft) {
+		if (window.Game.key.keyLeft || window.Game.key.arrowLeft) {
 			deltaX -= 25;
 		}
 
-		if (world.Maze.key.keyUp || world.Maze.key.arrowUp) {
+		if (window.Game.key.keyUp || window.Game.key.arrowUp) {
 			deltaY -= 25;
 		}
-		if (world.Maze.key.keyDown || world.Maze.key.arrowDown) {
+		if (window.Game.key.keyDown || window.Game.key.arrowDown) {
 			deltaY += 25;
 		}
 
@@ -77,14 +76,10 @@ public class Player extends JPanel {
 			if (world.Maze.map[tileX][tileY] == 2) {
 				this.x = nextX;
 				this.y = nextY;
-				
-				
-				
-				/*
-				 * JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game",
-				 *		JOptionPane.INFORMATION_MESSAGE);
-				 *  world.Maze.game.dispose();
-                 */
+				JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game",
+						JOptionPane.INFORMATION_MESSAGE);
+				//window.Game.frame.dispose();
+
 			}
 			if (world.Maze.map[tileX][tileY] == 3) {
 				world.Maze.map[tileX][tileY] = 1;
