@@ -45,7 +45,7 @@ public class Maze {
 
 				if (map[x][y] == 0) {
 					//tile.setBackground(Color.GRAY);// wall
-					color.setColor(Color.GRAY);
+					color.setColor(Color.BLACK);
 					color.fillRect(0, 0, panelSize, panelSize);
 				}
 				if (map[x][y] == 1) {
