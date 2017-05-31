@@ -24,7 +24,6 @@ public class Game extends JPanel {
 	}
 
 	public static void main(String[] args) throws IOException, InterruptedException {
-
 		create();
 		
 		while (true) {
