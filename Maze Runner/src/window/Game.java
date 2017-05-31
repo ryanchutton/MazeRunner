@@ -1,21 +1,12 @@
 package window;
 
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.geom.Ellipse2D;
 import java.io.IOException;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import actor.KeyManager;
-import actor.Player;
-
+@SuppressWarnings("serial")
 public class Game extends JPanel {
 
 	public static Game game;
