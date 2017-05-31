@@ -78,7 +78,15 @@ public class Player extends JPanel {
 				this.y = nextY;
 				JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game",
 						JOptionPane.INFORMATION_MESSAGE);
-				//window.Game.frame.dispose();
+				window.Game.frame.dispose();
+				try {
+					window.Game.create();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				this.x = 0;
+				this.y = 0;
 
 			}
 			if (world.Maze.map[tileX][tileY] == 3) {
@@ -98,12 +106,16 @@ public class Player extends JPanel {
 					world.Maze.map[tileX][tileY] = 1;
 					tile = new world.Tile(Color.WHITE, nextX, nextY);
 					if (deltaY < 0) {
-						world.Maze.map[tileX][tileY - 1] = 6;
-						tileBlock = new world.Tile(Color.RED, nextX, nextY - 25);
+						if (world.Maze.map[tileX][tileY - 1] != 0) {
+							world.Maze.map[tileX][tileY - 1] = 6;
+							tileBlock = new world.Tile(Color.RED, nextX, nextY - 25);
+						}
 					}
 					if (deltaY > 0) {
-						world.Maze.map[tileX][tileY + 1] = 6;
-						tileBlock = new world.Tile(Color.RED, nextX, nextY + 25);
+						if (world.Maze.map[tileX][tileY + 1] != 0) {
+							world.Maze.map[tileX][tileY + 1] = 6;
+							tileBlock = new world.Tile(Color.RED, nextX, nextY + 25);
+						}
 					}
 
 				}
@@ -112,12 +124,16 @@ public class Player extends JPanel {
 					world.Maze.map[tileX][tileY] = 1;
 					tile = new world.Tile(Color.WHITE, nextX, nextY);
 					if (deltaX < 0) {
-						world.Maze.map[tileX - 1][tileY] = 6;
-						tileBlock = new world.Tile(Color.RED, nextX - 25, nextY);
+						if (world.Maze.map[tileX - 1][tileY] != 0) {
+							world.Maze.map[tileX - 1][tileY] = 6;
+							tileBlock = new world.Tile(Color.RED, nextX - 25, nextY);
+						}
 					}
 					if (deltaX > 0) {
-						world.Maze.map[tileX + 1][tileY] = 6;
-						tileBlock = new world.Tile(Color.RED, nextX + 25, nextY);
+						if (world.Maze.map[tileX + 1][tileY] != 0) {
+							world.Maze.map[tileX + 1][tileY] = 6;
+							tileBlock = new world.Tile(Color.RED, nextX + 25, nextY);
+						}
 					}
 				}
 

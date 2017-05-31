@@ -26,7 +26,6 @@ public class Game extends JPanel {
 	private static String str;
 	public static JFrame frame;
 
-
 	public void paint(Graphics g) {
 		super.paint(g);
 		m.paint(g);
@@ -34,19 +33,9 @@ public class Game extends JPanel {
 	}
 
 	public static void main(String[] args) throws IOException, InterruptedException {
+
+		create();
 		
-		game = new Game();
-		p = new actor.Player();
-		key = new actor.KeyManager();
-		loadMap();
-		frame = new JFrame("Maze Runner");
-		frame.setSize(750, 750);
-		frame.add(game);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	
-		frame.addKeyListener(key);
-	
 		while (true) {
 			game.repaint();
 			key.update();
@@ -65,5 +54,19 @@ public class Game extends JPanel {
 																		// "+"1"+".map"
 	}
 
-	
+	public static void create() throws IOException {
+
+		game = new Game();
+		p = new actor.Player();
+		key = new actor.KeyManager();
+		loadMap();
+		frame = new JFrame("Maze Runner");
+		frame.setSize(750, 750);
+		frame.add(game);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		frame.addKeyListener(key);
+	}
+
 }
