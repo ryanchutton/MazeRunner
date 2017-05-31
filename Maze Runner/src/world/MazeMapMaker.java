@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+@SuppressWarnings("serial")
 public class MazeMapMaker extends JFrame{
 	static int rows = 30;
     static int columns = 30;
@@ -106,7 +107,8 @@ public class MazeMapMaker extends JFrame{
         }
     }
     
-    public void loadMap(){
+    @SuppressWarnings("resource")
+	public void loadMap(){
         try{
             BufferedReader br = new BufferedReader(new FileReader("data\\maps\\" + "Level "+level+".map"));
             StringBuilder sb = new StringBuilder();
