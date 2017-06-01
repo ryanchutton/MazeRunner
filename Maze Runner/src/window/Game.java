@@ -34,9 +34,12 @@ public class Game extends JPanel {
 	}
 
 	public static void loadMap() throws IOException {
-		str = JOptionPane.showInputDialog(null, "Please enter level number.");
+		str = JOptionPane.showInputDialog(null, "Please enter level number. Type 'quit' to exit");
 		if (str.length() < 1) {
 			loadMap();
+		}
+		else if(str.toLowerCase().equals("quit")){		
+			System.exit(0);
 		}
 		m = new world.Maze("data\\maps\\" + "Level " + str + ".map"); // "data\\maps\\"
 																		// +
