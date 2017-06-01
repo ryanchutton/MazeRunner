@@ -34,7 +34,10 @@ public class Game extends JPanel {
 	}
 
 	public static void loadMap() throws IOException {
-		str = JOptionPane.showInputDialog(null, "Please enter level number. Type 'quit' to exit");
+		str = JOptionPane.showInputDialog(null, "WELCOME TO MAZE RUNNER \n\n\n\n\n\n\n "
+				+ "How To Play: \n\n\n 1) Collect the yellow blocks to unlock the "
+				+ "green doors \n\n\n 2) Push red and blue blocks \n\n\n 3)Get to "
+				+ "the cyan blocks to finish the level! \n\n\n\n\n Please enter level number. Type \"quit\" to quit.");
 		if (str.length() < 1) {
 			loadMap();
 		}

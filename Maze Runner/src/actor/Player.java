@@ -134,6 +134,45 @@ public class Player extends JPanel {
 					}
 				}
 			}
+			if (world.Maze.map[tileX][tileY] == 7) {
+				if (deltaX == 0) {
+					tile = new world.Tile(Color.WHITE, nextX, nextY);
+					if (deltaY < 0) {
+						if (world.Maze.map[tileX][tileY - 1] == 1) {
+							world.Maze.map[tileX][tileY - 1] = 6;
+							tileBlock = new world.Tile(Color.BLUE, nextX, nextY - 25);
+							world.Maze.map[tileX][tileY] = 1;
+						}
+					}
+					if (deltaY > 0) {
+						if (world.Maze.map[tileX][tileY + 1] == 1) {
+							world.Maze.map[tileX][tileY + 1] = 7;
+							tileBlock = new world.Tile(Color.BLUE, nextX, nextY + 25);
+							world.Maze.map[tileX][tileY] = 1;
+						}
+					}
+ 
+				}
+ 
+				if (deltaY == 0) {
+					tile = new world.Tile(Color.WHITE, nextX, nextY);
+					if (deltaX < 0) {
+						if (world.Maze.map[tileX - 1][tileY] == 1) {
+							world.Maze.map[tileX - 1][tileY] = 7;
+							tileBlock = new world.Tile(Color.BLUE, nextX - 25, nextY);
+							world.Maze.map[tileX][tileY] = 1;
+						}
+					}
+					if (deltaX > 0) {
+						if (world.Maze.map[tileX + 1][tileY] == 1) {
+							world.Maze.map[tileX + 1][tileY] = 7;
+							tileBlock = new world.Tile(Color.BLUE, nextX + 25, nextY);
+							world.Maze.map[tileX][tileY] = 1;
+						}
+ 
+					}
+				}
+			}
 		}
 	}
 
