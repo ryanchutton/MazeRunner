@@ -5,8 +5,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class Maze {
 	public static int rows = 30;
@@ -20,10 +23,11 @@ public class Maze {
 
 	}
 
-	public void paint(Graphics g) {
+	public void paint(Graphics g) throws IOException {
 		Graphics2D g2d = (Graphics2D) g;
+		//BufferedImage redBlock = ImageIO.read(new File("data\\sprites\\terrain\\player.png"));
 		// Color map
-		for (int y = 0; y < columns; y++) {
+		for (int y = 0; y < columns; y++) { //systematically works through the list to add the graphics of the maze
 			for (int x = 0; x < rows; x++) {
 				BufferedImage tile = new BufferedImage(panelSize, panelSize, BufferedImage.TYPE_INT_ARGB);
 				Graphics color = tile.createGraphics();

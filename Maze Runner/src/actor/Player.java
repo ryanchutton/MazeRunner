@@ -29,6 +29,8 @@ public class Player extends JPanel {
 	}
 
 	public void keyKeys() {
+		// calculates the x and y movement of the player 
+		// supports arrow keys and wasd
 		int deltaX = 0, deltaY = 0;
 		if (window.Game.key.keyRight || window.Game.key.arrowRight) {
 			deltaX += 25;
@@ -47,11 +49,11 @@ public class Player extends JPanel {
 		move(deltaX, deltaY);
 	}
 
-	public void move(int deltaX, int deltaY) {
+	public void move(int deltaX, int deltaY) { //move method to move the player
 		boolean go = true;
-
-		int nextX = deltaX + this.x;
-		int nextY = deltaY + this.y;
+		// calculates
+		int nextX = deltaX + this.x; //new X position
+		int nextY = deltaY + this.y;//next Y position
 
 		int tileX = nextX / 25;
 		int tileY = nextY / 25;
@@ -64,11 +66,11 @@ public class Player extends JPanel {
 			go = false;
 		}
 		if (go) {
-			if (world.Maze.map[tileX][tileY] == 1) {
+			if (world.Maze.map[tileX][tileY] == 1) { //tile 1 is the wall
 				this.x = nextX;
 				this.y = nextY;
 			}
-			if (world.Maze.map[tileX][tileY] == 2) {
+			if (world.Maze.map[tileX][tileY] == 2) { //the end block
 				this.x = nextX;
 				this.y = nextY;
 				JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game",
@@ -84,20 +86,20 @@ public class Player extends JPanel {
 				this.y = 0;
 
 			}
-			if (world.Maze.map[tileX][tileY] == 3) {
+			if (world.Maze.map[tileX][tileY] == 3) { //adds key
 				world.Maze.map[tileX][tileY] = 1;
 				tile = new world.Tile(Color.WHITE, nextX, nextY);
 				actor.Player.addKey(1);
 			}
-			if (world.Maze.map[tileX][tileY] == 4) {
+			if (world.Maze.map[tileX][tileY] == 4) { //door, removes key
 				if (actor.Player.keys > 0) {
 					world.Maze.map[tileX][tileY] = 1;
 					tile = new world.Tile(Color.WHITE, nextX, nextY);
 					actor.Player.removeKey(1);
 				}
 			}
-			if (world.Maze.map[tileX][tileY] == 6) {
-				if (deltaX == 0) {
+			if (world.Maze.map[tileX][tileY] == 6) { // red block
+				if (deltaX == 0) { //calculates where the block will go and checks if the destination is valid
 					tile = new world.Tile(Color.WHITE, nextX, nextY);
 					if (deltaY < 0) {
 						if (world.Maze.map[tileX][tileY - 1] == 1) {
@@ -116,7 +118,7 @@ public class Player extends JPanel {
 
 				}
 
-				if (deltaY == 0) {
+				if (deltaY == 0) {//calculates where the block will go and checks if the destination is valid
 					tile = new world.Tile(Color.WHITE, nextX, nextY);
 					if (deltaX < 0) {
 						if (world.Maze.map[tileX - 1][tileY] == 1) {
@@ -135,11 +137,11 @@ public class Player extends JPanel {
 				}
 			}
 			if (world.Maze.map[tileX][tileY] == 7) {
-				if (deltaX == 0) {
+				if (deltaX == 0) {//calculates where the block will go and checks if the destination is valid
 					tile = new world.Tile(Color.WHITE, nextX, nextY);
 					if (deltaY < 0) {
 						if (world.Maze.map[tileX][tileY - 1] == 1) {
-							world.Maze.map[tileX][tileY - 1] = 6;
+							world.Maze.map[tileX][tileY - 1] = 7;
 							tileBlock = new world.Tile(Color.BLUE, nextX, nextY - 25);
 							world.Maze.map[tileX][tileY] = 1;
 						}
@@ -154,7 +156,7 @@ public class Player extends JPanel {
  
 				}
  
-				if (deltaY == 0) {
+				if (deltaY == 0) {//calculates where the block will go and checks if the destination is valid
 					tile = new world.Tile(Color.WHITE, nextX, nextY);
 					if (deltaX < 0) {
 						if (world.Maze.map[tileX - 1][tileY] == 1) {

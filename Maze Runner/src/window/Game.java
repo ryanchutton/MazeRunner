@@ -9,9 +9,6 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Game extends JPanel {
 
-
-	
-	
     public static Game game;
     public static int frameWidth = 500, frameHeight = 500;
     public static actor.Player p;
@@ -20,10 +17,14 @@ public class Game extends JPanel {
     private static String str;
     public static JFrame frame;
 
-
     public void paint(Graphics g) {
         super.paint(g);
-        m.paint(g);
+        try {
+			m.paint(g);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         p.paint(g);
     }
 
@@ -37,25 +38,25 @@ public class Game extends JPanel {
         }
     }
 
-
-	public static void loadMap() throws IOException {
-		str = JOptionPane.showInputDialog(null, "Please enter level number. \n Type 'quit' to exit and type '?' for help");
-		if (str.length() < 1) {
-			loadMap();
-		}
-		else if(str.toLowerCase().equals("quit")){		
-			System.exit(0);
-		}
-		else if(str.toLowerCase().equals("?")){
-			window.help h = new window.help();
-			frame.setVisible(false);
-		}
-		m = new world.Maze("data\\maps\\" + "Level " + str + ".map"); // "data\\maps\\"
-																		// +
-																		// "Level
-																		// "+"1"+".map"
-	}
-
+    public static void loadMap() throws IOException {
+        str = JOptionPane.showInputDialog(null, "WELCOME TO MAZE RUNNER \n"
+                + "How To Play: \n  1) Collect the yellow blocks to unlock the "
+                + "green doors \n  2) Push red and blue blocks \n  3) Get to "
+                + "the cyan blocks to finish the level! \n\n Please enter level number. Type \"quit\" to quit.\n");
+        if (str == null) {
+            System.exit(0);
+        }
+        if (str.length() < 1) {
+            loadMap();
+        }
+        else if(str.toLowerCase().equals("quit")){      
+            System.exit(0);
+        }
+        m = new world.Maze("data\\maps\\" + "Level " + str + ".map"); // "data\\maps\\"
+                                                                        // +
+                                                                        // "Level
+                                                                        // "+"1"+".map"
+    }
 
     public static void create() throws IOException {
 

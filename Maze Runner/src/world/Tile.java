@@ -6,7 +6,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class Tile extends JPanel {
+public class Tile extends JPanel { //tile for drawing the map
 	int x, y;
 	Color color;
 
