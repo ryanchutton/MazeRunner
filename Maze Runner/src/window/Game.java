@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Game extends JPanel {
 
+	
 	public static Game game;
 	public static int frameWidth = 500, frameHeight = 500;
 	public static actor.Player p;
@@ -34,12 +35,16 @@ public class Game extends JPanel {
 	}
 
 	public static void loadMap() throws IOException {
-		str = JOptionPane.showInputDialog(null, "Please enter level number. Type 'quit' to exit");
+		str = JOptionPane.showInputDialog(null, "Please enter level number. \n Type 'quit' to exit and type '?' for help");
 		if (str.length() < 1) {
 			loadMap();
 		}
 		else if(str.toLowerCase().equals("quit")){		
 			System.exit(0);
+		}
+		else if(str.toLowerCase().equals("?")){
+			window.help h = new window.help();
+			frame.setVisible(false);
 		}
 		m = new world.Maze("data\\maps\\" + "Level " + str + ".map"); // "data\\maps\\"
 																		// +
