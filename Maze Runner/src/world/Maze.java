@@ -27,15 +27,15 @@ public class Maze {
 
 	public void paint(Graphics g) throws IOException {
 		Graphics2D g2d = (Graphics2D) g;
+		BufferedImage tile = new BufferedImage(panelSize, panelSize, BufferedImage.TYPE_INT_ARGB);
+		Graphics color;
 		// Color map
 		do {
 			for (int y = 0; y < columns; y++) { // systematically works through
 												// the list to add the graphics
 												// of the maze
 				for (int x = 0; x < rows; x++) {
-					BufferedImage tile = new BufferedImage(panelSize, panelSize, BufferedImage.TYPE_INT_ARGB);
-					Graphics color = tile.createGraphics();
-
+					color = tile.createGraphics();
 					if (map[x][y] == 'a') {
 						// wall
 						color.setColor(Color.BLACK);
