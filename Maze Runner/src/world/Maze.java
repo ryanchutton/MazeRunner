@@ -17,15 +17,16 @@ public class Maze {
 	public static int panelSize = 25;
 	public static char map[][] = new char[columns][rows];
 	public static int endLevelLoc;
+	boolean go;
 
 	public Maze(String str) throws IOException {
 		loadMap(str);
+		go = true;
 
 	}
 
 	public void paint(Graphics g) throws IOException {
 		Graphics2D g2d = (Graphics2D) g;
-		boolean go = true;
 		// Color map
 		do {
 			for (int y = 0; y < columns; y++) { // systematically works through
