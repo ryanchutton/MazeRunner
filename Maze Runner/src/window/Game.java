@@ -19,7 +19,7 @@ public class Game extends JPanel {
 
     public void paint(Graphics g) {
         super.paint(g);
-		try {
+        try {
 			m.paint(g);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -52,7 +52,7 @@ public class Game extends JPanel {
         else if(str.toLowerCase().equals("quit")){      
             System.exit(0);
         }
-        m = new world.Maze("data\\maps\\" + "Level " + str + ".map"); // "data\\maps\\"
+        m = new world.Maze("data\\maps\\" + "Level " + str + ".map");// "data\\maps\\"
                                                                         // +
                                                                         // "Level
                                                                         // "+"1"+".map"
