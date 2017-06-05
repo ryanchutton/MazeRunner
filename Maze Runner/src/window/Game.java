@@ -42,7 +42,7 @@ public class Game extends JPanel {
         str = JOptionPane.showInputDialog(null, "WELCOME TO MAZE RUNNER \n"
                 + "How To Play: \n  1) Collect the yellow blocks to unlock the "
                 + "green doors \n  2) Push red and blue blocks \n  3) Get to "
-                + "the cyan blocks to finish the level! \n\n Please enter level number. Type \"quit\" to quit.\n");
+                + "the cyan blocks to finish the level! \n\n Please enter level number 1-7. Type \"quit\" to quit.\n");
         if (str == null) {
             System.exit(0);
         }
