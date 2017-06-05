@@ -25,83 +25,89 @@ public class Maze {
 
 	public void paint(Graphics g) throws IOException {
 		Graphics2D g2d = (Graphics2D) g;
+		boolean go = true;
 		// Color map
-		for (int y = 0; y < columns; y++) { //systematically works through the list to add the graphics of the maze
-			for (int x = 0; x < rows; x++) {
-				BufferedImage tile = new BufferedImage(panelSize, panelSize, BufferedImage.TYPE_INT_ARGB);
-				Graphics color = tile.createGraphics();
+		do {
+			for (int y = 0; y < columns; y++) { // systematically works through
+												// the list to add the graphics
+												// of the maze
+				for (int x = 0; x < rows; x++) {
+					BufferedImage tile = new BufferedImage(panelSize, panelSize, BufferedImage.TYPE_INT_ARGB);
+					Graphics color = tile.createGraphics();
 
-				if (map[x][y] == 'a') {
-					//wall
-					color.setColor(Color.BLACK);
-					color.fillRect(0, 0, panelSize, panelSize);
-				}
-				if (map[x][y] == 'b') {
-					// corridor
-					BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\brickFloor.png"));
-					color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
-					color.dispose();
-				}
-				if (map[x][y] == 'c') {
-					// goal
-					BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\goal.png"));
-					color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
-					color.dispose();
-				}
-				if (map[x][y] == 'd') {
-					//door
-					BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\door.png"));
-					color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
-					color.dispose();
-				}
-				if (map[x][y] == 'e') {
-					//door
-					BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\door90.png"));
-					color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
-					color.dispose();
-				}
-				if (map[x][y] == 'f') {
-					//key
-					BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\key.png"));
-					color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
-					color.dispose();
-				}
-				if (map[x][y] == 'g') {
-					//receptacle
-					color.setColor(Color.PINK);
-					color.fillRect(0, 0, panelSize, panelSize);
-				}
-				if (map[x][y] == 'h') {
-					//block1
-					BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\stoneBlockRed.png"));
-					color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
-					color.dispose();
-				}
-				if (map[x][y] == 'i') {
-					//block2
-					BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\stoneBlockBlue.png"));
-					color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
-					color.dispose();
-				}
-				if (map[x][y] == 'j') {
-					//block3
-					color.setColor(Color.YELLOW);
-					color.fillRect(0, 0, panelSize, panelSize);
-				}
-				//tile.setWall(false);
-				if (x == 0) {
-				}
-				if (x == columns - 1) {
-					endLevelLoc = y;
-				}
+					if (map[x][y] == 'a') {
+						// wall
+						color.setColor(Color.BLACK);
+						color.fillRect(0, 0, panelSize, panelSize);
+					}
+					if (map[x][y] == 'b') {
+						// corridor
+						BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\brickFloor.png"));
+						color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
+						color.dispose();
+					}
+					if (map[x][y] == 'c') {
+						// goal
+						BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\goal.png"));
+						color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
+						color.dispose();
+					}
+					if (map[x][y] == 'd') {
+						// door
+						BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\door.png"));
+						color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
+						color.dispose();
+					}
+					if (map[x][y] == 'e') {
+						// door
+						BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\door90.png"));
+						color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
+						color.dispose();
+					}
+					if (map[x][y] == 'f') {
+						// key
+						BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\key.png"));
+						color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
+						color.dispose();
+					}
+					if (map[x][y] == 'g') {
+						// receptacle
+						color.setColor(Color.PINK);
+						color.fillRect(0, 0, panelSize, panelSize);
+					}
+					if (map[x][y] == 'h') {
+						// block1
+						BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\stoneBlockRed.png"));
+						color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
+						color.dispose();
+					}
+					if (map[x][y] == 'i') {
+						// block2
+						BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\stoneBlockBlue.png"));
+						color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
+						color.dispose();
+					}
+					if (map[x][y] == 'j') {
+						// block3
+						color.setColor(Color.YELLOW);
+						color.fillRect(0, 0, panelSize, panelSize);
+					}
+					// tile.setWall(false);
+					if (x == 0) {
+					}
+					if (x == columns - 1) {
+						endLevelLoc = y;
+					}
 
-				g2d.drawImage(tile, (x * panelSize), (y * panelSize), panelSize, panelSize, null);
+					g2d.drawImage(tile, (x * panelSize), (y * panelSize), panelSize, panelSize, null);
 
+				}
 			}
-		}
+			go = false;
+		} while (go);
 
 	}
-	
+
 	@SuppressWarnings("resource")
 	public void loadMap(String str) {
 		try {
