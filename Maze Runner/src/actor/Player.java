@@ -49,7 +49,7 @@ public class Player extends JPanel {
 		move(deltaX, deltaY);
 	}
 
-	public void move(int deltaX, int deltaY) { //move method to move the player
+	public void move(int deltaX, int deltaY)  { //move method to move the player
 		boolean go = true;
 		// calculates
 		int nextX = deltaX + this.x; //new X position
@@ -66,11 +66,11 @@ public class Player extends JPanel {
 			go = false;
 		}
 		if (go) {
-			if (world.Maze.map[tileX][tileY] == 1) { //tile 1 is the wall
+			if (world.Maze.map[tileX][tileY] == 'b') { //tile 1 is the wall
 				this.x = nextX;
 				this.y = nextY;
 			}
-			if (world.Maze.map[tileX][tileY] == 2) { //the end block
+			if (world.Maze.map[tileX][tileY] == 'c') { //the end block
 				this.x = nextX;
 				this.y = nextY;
 				JOptionPane.showMessageDialog(null, "Congratulations, you've beaten the level!", "End Game",
@@ -86,90 +86,172 @@ public class Player extends JPanel {
 				this.y = 0;
 
 			}
-			if (world.Maze.map[tileX][tileY] == 3) { //adds key
-				world.Maze.map[tileX][tileY] = 1;
-				tile = new world.Tile(Color.WHITE, nextX, nextY);
+			if (world.Maze.map[tileX][tileY] == 'f') { //adds key
+				world.Maze.map[tileX][tileY] = 'b';
+				try {
+					tile = new world.Tile("data\\sprites\\terrain\\brickFloor.png", nextX, nextY);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				actor.Player.addKey(1);
 			}
-			if (world.Maze.map[tileX][tileY] == 4) { //door, removes key
+			if (world.Maze.map[tileX][tileY] == 'd') { //door, removes key
 				if (actor.Player.keys > 0) {
-					world.Maze.map[tileX][tileY] = 1;
-					tile = new world.Tile(Color.WHITE, nextX, nextY);
+					world.Maze.map[tileX][tileY] = 'b';
+					try {
+						tile = new world.Tile("data\\sprites\\terrain\\brickFloor.png", nextX, nextY);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					actor.Player.removeKey(1);
 				}
 			}
-			if (world.Maze.map[tileX][tileY] == 6) { // red block
+			if (world.Maze.map[tileX][tileY] == 'e') { //door, removes key
+				if (actor.Player.keys > 0) {
+					world.Maze.map[tileX][tileY] = 'b';
+					try {
+						tile = new world.Tile("data\\sprites\\terrain\\brickFloor.png", nextX, nextY);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					actor.Player.removeKey(1);
+				}
+			}
+			if (world.Maze.map[tileX][tileY] == 'h') { // red block
 				if (deltaX == 0) { //calculates where the block will go and checks if the destination is valid
-					tile = new world.Tile(Color.WHITE, nextX, nextY);
+					try {
+						tile = new world.Tile("data\\sprites\\terrain\\brickFloor.png", nextX, nextY);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					if (deltaY < 0) {
-						if (world.Maze.map[tileX][tileY - 1] == 1) {
-							world.Maze.map[tileX][tileY - 1] = 6;
-							tileBlock = new world.Tile(Color.RED, nextX, nextY - 25);
-							world.Maze.map[tileX][tileY] = 1;
+						if (world.Maze.map[tileX][tileY - 1] == 'b') {
+							world.Maze.map[tileX][tileY - 1] = 'h';
+							try {
+								tileBlock = new world.Tile("data\\sprites\\terrain\\stoneBlockRed.png", nextX, nextY - 25);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							world.Maze.map[tileX][tileY] = 'b';
 						}
 					}
 					if (deltaY > 0) {
-						if (world.Maze.map[tileX][tileY + 1] == 1) {
-							world.Maze.map[tileX][tileY + 1] = 6;
-							tileBlock = new world.Tile(Color.RED, nextX, nextY + 25);
-							world.Maze.map[tileX][tileY] = 1;
+						if (world.Maze.map[tileX][tileY + 1] == 'b') {
+							world.Maze.map[tileX][tileY + 1] = 'h';
+							try {
+								tileBlock = new world.Tile("data\\sprites\\terrain\\stoneBlockRed.png", nextX, nextY + 25);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							world.Maze.map[tileX][tileY] = 'b';
 						}
 					}
 
 				}
 
 				if (deltaY == 0) {//calculates where the block will go and checks if the destination is valid
-					tile = new world.Tile(Color.WHITE, nextX, nextY);
+					try {
+						tile = new world.Tile("data\\sprites\\terrain\\brickFloor.png", nextX, nextY);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					if (deltaX < 0) {
-						if (world.Maze.map[tileX - 1][tileY] == 1) {
-							world.Maze.map[tileX - 1][tileY] = 6;
-							tileBlock = new world.Tile(Color.RED, nextX - 25, nextY);
-							world.Maze.map[tileX][tileY] = 1;
+						if (world.Maze.map[tileX - 1][tileY] == 'b') {
+							world.Maze.map[tileX - 1][tileY] = 'h';
+							try {
+								tileBlock = new world.Tile("data\\sprites\\terrain\\stoneBlockRed.png", nextX - 25, nextY);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							world.Maze.map[tileX][tileY] = 'b';
 						}
 					}
 					if (deltaX > 0) {
-						if (world.Maze.map[tileX + 1][tileY] == 1) {
-							world.Maze.map[tileX + 1][tileY] = 6;
-							tileBlock = new world.Tile(Color.RED, nextX + 25, nextY);
-							world.Maze.map[tileX][tileY] = 1;
+						if (world.Maze.map[tileX + 1][tileY] == 'b') {
+							world.Maze.map[tileX + 1][tileY] = 'h';
+							try {
+								tileBlock = new world.Tile("data\\sprites\\terrain\\stoneBlockRed.png", nextX + 25, nextY);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							world.Maze.map[tileX][tileY] = 'b';
 						}
 					}
 				}
 			}
-			if (world.Maze.map[tileX][tileY] == 7) {
+			if (world.Maze.map[tileX][tileY] == 'i') {
 				if (deltaX == 0) {//calculates where the block will go and checks if the destination is valid
-					tile = new world.Tile(Color.WHITE, nextX, nextY);
+					try {
+						tile = new world.Tile("data\\sprites\\terrain\\brickFloor.png", nextX, nextY);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					if (deltaY < 0) {
-						if (world.Maze.map[tileX][tileY - 1] == 1) {
-							world.Maze.map[tileX][tileY - 1] = 7;
-							tileBlock = new world.Tile(Color.BLUE, nextX, nextY - 25);
-							world.Maze.map[tileX][tileY] = 1;
+						if (world.Maze.map[tileX][tileY - 1] == 'b') {
+							world.Maze.map[tileX][tileY - 1] = 'i';
+							try {
+								tileBlock = new world.Tile("data\\sprites\\terrain\\stoneBlockBlue.png", nextX, nextY - 25);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							world.Maze.map[tileX][tileY] = 'b';
 						}
 					}
 					if (deltaY > 0) {
-						if (world.Maze.map[tileX][tileY + 1] == 1) {
-							world.Maze.map[tileX][tileY + 1] = 7;
-							tileBlock = new world.Tile(Color.BLUE, nextX, nextY + 25);
-							world.Maze.map[tileX][tileY] = 1;
+						if (world.Maze.map[tileX][tileY + 1] == 'b') {
+							world.Maze.map[tileX][tileY + 1] = 'i';
+							try {
+								tileBlock = new world.Tile("data\\sprites\\terrain\\stoneBlockBlue.png", nextX, nextY + 25);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							world.Maze.map[tileX][tileY] = 'b';
 						}
 					}
  
 				}
  
 				if (deltaY == 0) {//calculates where the block will go and checks if the destination is valid
-					tile = new world.Tile(Color.WHITE, nextX, nextY);
+					try {
+						tile = new world.Tile("data\\sprites\\terrain\\brickFloor.png", nextX, nextY);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					if (deltaX < 0) {
-						if (world.Maze.map[tileX - 1][tileY] == 1) {
-							world.Maze.map[tileX - 1][tileY] = 7;
-							tileBlock = new world.Tile(Color.BLUE, nextX - 25, nextY);
-							world.Maze.map[tileX][tileY] = 1;
+						if (world.Maze.map[tileX - 1][tileY] == 'b') {
+							world.Maze.map[tileX - 1][tileY] = 'i';
+							try {
+								tileBlock = new world.Tile("data\\sprites\\terrain\\stoneBlockBlue.png", nextX - 25, nextY);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							world.Maze.map[tileX][tileY] = 'b';
 						}
 					}
 					if (deltaX > 0) {
-						if (world.Maze.map[tileX + 1][tileY] == 1) {
-							world.Maze.map[tileX + 1][tileY] = 7;
-							tileBlock = new world.Tile(Color.BLUE, nextX + 25, nextY);
-							world.Maze.map[tileX][tileY] = 1;
+						if (world.Maze.map[tileX + 1][tileY] == 'b') {
+							world.Maze.map[tileX + 1][tileY] = 'i';
+							try {
+								tileBlock = new world.Tile("data\\sprites\\terrain\\stoneBlockBlue.png", nextX + 25, nextY);
+							} catch (IOException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							world.Maze.map[tileX][tileY] = 'b';
 						}
  
 					}

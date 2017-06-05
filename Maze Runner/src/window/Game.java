@@ -19,7 +19,7 @@ public class Game extends JPanel {
 
     public void paint(Graphics g) {
         super.paint(g);
-        try {
+		try {
 			m.paint(g);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

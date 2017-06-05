@@ -15,7 +15,7 @@ public class Maze {
 	public static int rows = 30;
 	public static int columns = 30;
 	public static int panelSize = 25;
-	public static int map[][] = new int[columns][rows];
+	public static char map[][] = new char[columns][rows];
 	public static int endLevelLoc;
 
 	public Maze(String str) throws IOException {
@@ -25,55 +25,66 @@ public class Maze {
 
 	public void paint(Graphics g) throws IOException {
 		Graphics2D g2d = (Graphics2D) g;
-		//BufferedImage redBlock = ImageIO.read(new File("data\\sprites\\terrain\\player.png"));
 		// Color map
 		for (int y = 0; y < columns; y++) { //systematically works through the list to add the graphics of the maze
 			for (int x = 0; x < rows; x++) {
 				BufferedImage tile = new BufferedImage(panelSize, panelSize, BufferedImage.TYPE_INT_ARGB);
 				Graphics color = tile.createGraphics();
 
-				if (map[x][y] == 0) {
-					//tile.setBackground(Color.GRAY);// wall
+				if (map[x][y] == 'a') {
+					//wall
 					color.setColor(Color.BLACK);
 					color.fillRect(0, 0, panelSize, panelSize);
 				}
-				if (map[x][y] == 1) {
-					//tile.setBackground(Color.WHITE);// corridor
-					color.setColor(Color.WHITE);
-					color.fillRect(0, 0, panelSize, panelSize);
+				if (map[x][y] == 'b') {
+					// corridor
+					BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\brickFloor.png"));
+					color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
+					color.dispose();
 				}
-				if (map[x][y] == 2) {
-					//tile.setBackground(Color.CYAN);// token
-					color.setColor(Color.CYAN);
-					color.fillRect(0, 0, panelSize, panelSize);
+				if (map[x][y] == 'c') {
+					// goal
+					BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\goal.png"));
+					color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
+					color.dispose();
 				}
-				if (map[x][y] == 3) {
-					//tile.setBackground(Color.ORANGE);// key
-					color.setColor(Color.ORANGE);
-					color.fillRect(0, 0, panelSize, panelSize);
+				if (map[x][y] == 'd') {
+					//door
+					BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\door.png"));
+					color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
+					color.dispose();
 				}
-				if (map[x][y] == 4) {
-					//tile.setBackground(Color.GREEN);// door
-					color.setColor(Color.GREEN);
-					color.fillRect(0, 0, panelSize, panelSize);
+				if (map[x][y] == 'e') {
+					//door
+					BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\door90.png"));
+					color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
+					color.dispose();
 				}
-				if (map[x][y] == 5) {
-					//tile.setBackground(Color.PINK);// receptacle
+				if (map[x][y] == 'f') {
+					//key
+					BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\key.png"));
+					color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
+					color.dispose();
+				}
+				if (map[x][y] == 'g') {
+					//receptacle
 					color.setColor(Color.PINK);
 					color.fillRect(0, 0, panelSize, panelSize);
 				}
-				if (map[x][y] == 6) {
-					//tile.setBackground(Color.RED); // block1
-					color.setColor(Color.RED);
-					color.fillRect(0, 0, panelSize, panelSize);
+				if (map[x][y] == 'h') {
+					//block1
+					BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\stoneBlockRed.png"));
+					color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
+					color.dispose();
 				}
-				if (map[x][y] == 7) {
-					//tile.setBackground(Color.BLUE);// block2
-					color.setColor(Color.BLUE);
-					color.fillRect(0, 0, panelSize, panelSize);
+				if (map[x][y] == 'i') {
+					//block2
+					BufferedImage in = ImageIO.read(new File("data\\sprites\\terrain\\stoneBlockBlue.png"));
+					color.drawImage(in, 0, 0, in.getWidth(), in.getHeight(), null);
+					color.dispose();
 				}
-				if (map[x][y] == 8) {
-					//tile.setBackground(Color.YELLOW);// block3
+				if (map[x][y] == 'j') {
+					//block3
 					color.setColor(Color.YELLOW);
 					color.fillRect(0, 0, panelSize, panelSize);
 				}
@@ -114,7 +125,7 @@ public class Maze {
 																									// a
 																									// number
 						// System.out.print(mapChar);
-						map[x][y] = Integer.parseInt(mapChar);
+						map[x][y] = mapChar.charAt(0);
 					} else {// If it is a line break
 						x--;
 						System.out.print(mapChar);
